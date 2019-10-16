@@ -1,37 +1,54 @@
-## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/UrbanCode/velocity-info/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+*Practical usage of UrbanCode Velocity*
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+# Product Documentation
 
-### Markdown
+*This content is supplemental. Please also refer to version specific product documentation.*
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+#### [>> HCL Documentation](https://urbancode.hcldoc.com/)
+#### [>> IBM Documentation](https://www.ibm.com/support/knowledgecenter/SSCKX6)
 
-```markdown
-Syntax highlighted code block
+![Documentation can be accessed in the upper right of Velocity](general/docs.png)
 
-# Header 1
-## Header 2
-### Header 3
+#### Also checkout the Velocity Website! :) [http://www.urbancode.com/](http://www.urbancode.com/)
 
-- Bulleted
-- List
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
+# FAQ
+---
 
-[Link](url) and ![Image](src)
-```
+<br />
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+# Workbooks
+---
 
-### Jekyll Themes
+## 1. [Introduction to Value Streams](workbooks/introductionToValueStreams.md)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/UrbanCode/velocity-info/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+# API Docs
+---
 
-### Support or Contact
+<br />
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+
+
+# Example Value Stream Map (VSM) json
+---
+
+<br />
+
+# Feature Overviews
+---
+
+
+
+<br />
+<br />
+
+# How to Contribute
+
+- Create an Issue (describe a use case, technique, or problem)
+![](/general/contribute_issue.png)
+
+- Propose changes with a PR (direct addition or modification of content pending review)
+![](/general/contribute_pr_1.png)
+![](/general/contribute_pr_2.png)
