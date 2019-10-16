@@ -25,11 +25,13 @@ Lastly, we will turn our attention to the final phase of deployment. We will nee
     - [2.3.2 Upload the vsm.json file.](#232-upload-the-vsmjson-file)
     - [2.3.3 Confirm that integration is working](#233-confirm-that-integration-is-working)
   - [2.4 Stage Changes with Jira](#24-stage-changes-with-jira)
+- [Recap: Planning to Development, from Jira to GitHub](#recap-planning-to-development-from-jira-to-github)
 - [3. Working with GitHub](#3-working-with-github)
   - [3.1 Setting up a GitHub repository and Pull Request](#31-setting-up-a-github-repository-and-pull-request)
   - [3.2 Creating a GitHub integration](#32-creating-a-github-integration)
   - [3.3 Adding the GitHub Integration to a value stream](#33-adding-the-github-integration-to-a-value-stream)
   - [3.4 Stage changes using Jira and GitHub](#34-stage-changes-using-jira-and-github)
+- [Recap: From Development to Build servers and Beyond](#recap-from-development-to-build-servers-and-beyond)
 - [4. Working with Jenkins](#4-working-with-jenkins)
   - [4.1 Setting up Jenkins](#41-setting-up-jenkins)
   - [4.2 Creating a Jenkins Integration](#42-creating-a-jenkins-integration)
@@ -248,6 +250,10 @@ After setting up the Jira integration in Velocity and using the vsm.json file to
 3. Click on the dot to view details such as a link back to the Jira card as well as work item history.       
    ![](jira/dotHistory.png)
 
+# Recap: Planning to Development, from Jira to GitHub
+
+This section has focussed on the planning phase of our value stream. In this case, we used Jira as our issue tracker. We created a Jira board and issue, setup a Jira integration, added that integration to a value stream, and observed how the value stream tracked Jira status changes throughout the planning phase. In theory, we could use Jira for every stage of our value stream; however, in practice, Jira cards are encumbered by manual updates and ulterior constraints. We can do  better than that! We can directly integrate with our other systems like GitHub and Jenkins to gain a real-time, fully automated, and accurate visualization of our work item's journey. Next up is our development phase where we will add a GitHub integration and see how Jira and GitHub can work in tandem.
+
 # 3. Working with GitHub
 
 ## 3.1 Setting up a GitHub repository and Pull Request
@@ -375,6 +381,10 @@ The stage queries for this workbook allow Jira statuses to disagree with GitHub 
 6. A single dot moves from "In Review" to "Merged".  
    ![](github/movingDots/2c.png) -->
 
+
+# Recap: From Development to Build servers and Beyond
+
+So far we have already gained value by observing our value stream across Jira and GitHub. Next we will see how Jenkins can integrate with UrbanCode Velocity's pipeline and value stream forming a powerful combination of build and deployment control and tracking.
 
 # 4. Working with Jenkins
 
@@ -510,7 +520,16 @@ node {
 ```
 
 1. **Run the job from Jenkins and observe stage changes in your UrbanCode Velocity value stream.**  
-At this point we'll return to our value stream and should still have a dot in the "Merged" stage. We will run the Jenkins pipeline job we created which includes three steps for build, deploy to DEV, and deploy to QA. This means that, upon running the job, we should see the dot move as follows: "Merged" --> "Build" --> "DEV" --> "QA".
+At this point, back in our value stream, there should still be a dot in the "Merged" stage. We will run the Jenkins pipeline job we created which includes three steps: build, DEV deployment, and QA deployment. This means that, upon running the job, we should see the dot make three transitions: Merged --> Build --> DEV --> QA.
+
+    - **Merged -> Build**
+    ![](jenkins/pipeline/Build.png)
+
+    - **Build -> DEV**
+    ![](jenkins/pipeline/DEV.png)
+
+    - **DEV -> QA**
+    ![](jenkins/pipeline/QA.png)
 
 ---
 
@@ -571,7 +590,7 @@ At this point we'll return to our value stream and should still have a dot in th
 
 #### 4.5.2.1 Create another Jenkins Job for Deployment to Prod
 
-1. Create a second pipeline job, this time for deployment to production environment.  
+1. Create a second pipeline job, this time for deployment to our production environment.  
     ![](jenkins/newItem.PNG)
     ![](jenkins/jkeApp1Prod.png)
 
@@ -635,10 +654,10 @@ node {
    ![](jenkins/pipeline/paramForm.png)
 
 3. You should now see "Not yet Run" under both "Input" and "PROD" columns. Go ahead and run the first Jenkins job to provide new build information to UrbanCode Velocity. After running the input job you should see version information.   
->   **Before Running Jenkins Job**   
->   ![](jenkins/pipeline/5.png)
->   **After Running Jenkins Job**   
->   ![](jenkins/pipeline/6.png)
+  **Before Running Jenkins Job**   
+  ![](jenkins/pipeline/5.png)
+  **After Running Jenkins Job**   
+  ![](jenkins/pipeline/6.png)
 
 #### 4.5.2.3 Final Stage Change to PROD
 
@@ -648,7 +667,7 @@ node {
    ![](jenkins/pipeline/deploy2.png)
 3. After the job has finished the pipeline should show "Deployment succeeded" along with a version number.   
    ![](jenkins/pipeline/deploy3.png)
-4. Going back to our value stream we should see our dot all the way in its final stage: PROD   
+4. Going back to the value stream we should see the dot move all the way to PROD, its final stage.  
    ![](jenkins/pipeline/deploy4.png)
 
 # 5. Conclusion
