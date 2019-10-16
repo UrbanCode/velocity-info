@@ -336,10 +336,14 @@ Use the vsm.json file to add the GitHub integration and a linkRule to the value 
     ![](github/vsm/2.png)
 1. After waiting for Velocity to detect and update, the dot should appear in the "In Progress" stage.  
    ![](github/movingDots/in&#32;progress.png)
-<!-- In this case, the stage query defined in the vsm.json allows one dot to lag behind based on Jira status, while the other dot moves ahead based on PR status. Both dots represent the same issue though, and are selected together. 
+
+
+<!--
+In this case, the stage query defined in the vsm.json allows one dot to lag behind based on Jira status, while the other dot moves ahead based on PR status. Both dots represent the same issue though, and are selected together. 
    ![](github/vsm/3.png)
 1. We can see from the Value Stream that the Jira card is now out-of-date and should be moved to "In Progress". In Jira, move the card from "Selected for Development" to "In Progress". Give enough time for Velocity to detect the change and update. The Jira status and PR state are now in agreement and should be a single dot inside the "In Progress" stage.
-   ![](github/vsm/4.png) -->
+   ![](github/vsm/4.png)
+-->
 
 
 ## 3.4 Stage changes using Jira and GitHub
@@ -508,7 +512,6 @@ node {
 1. **Run the job from Jenkins and observe stage changes in your UrbanCode Velocity value stream.**  
 At this point we'll return to our value stream and should still have a dot in the "Merged" stage. We will run the Jenkins pipeline job we created which includes three steps for build, deploy to DEV, and deploy to QA. This means that, upon running the job, we should see the dot move as follows: "Merged" --> "Build" --> "DEV" --> "QA".
 
-
 ---
 
 > 
@@ -518,8 +521,6 @@ At this point we'll return to our value stream and should still have a dot in th
 > For the inquisitive reader, the Jenkins script achieves this functionality as follows:
 > <br/>
 > <br/>
->  \
->  \
 > 
 > 1. **Build Stage**: The `UploadBuild` class is used to upload build data to UrbanCode Velocity. The `revision` parameter is important for linking the build to the work item via GitHub data (`GIT_COMMIT` in this case). The `versionName` is important for linking forward to deployments. The `appName` corresponds to the UrbanCode Velocity pipeline application name.
 >  ```groovy
