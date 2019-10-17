@@ -679,6 +679,9 @@ node {
 
 We have successfully navigated an entire value stream from backlog to production deployment spread across four separate tools and systems: three external tools (Jira, GitHub, and Jenkins), and Velocity itself as a deployment tool. We learned about key UrbanCode Velocity concepts such as the vsm.json file with its stage queries, integrations, and linkRules, as well as pipelines and deployments. From here you can go back and begin experimenting with your value stream. One good place to start is by looking at the vsm.json file stages and queries. From there you can begin to shape the value stream to match your own processes.
 
+
+<!--
 <figure class="video_container">
 <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSLTVmu37ghdpeiOPh0nQrTRRSLMPRQ5eB9Gpd6c_9y63-WPpca4hyUab-gaoG-pNK54PI2uuE8MWRc/embed?start=true&loop=true&delayms=3000" frameborder="0" width="1440" height="839" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 </figure>
+-->
