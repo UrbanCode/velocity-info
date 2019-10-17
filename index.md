@@ -19,7 +19,8 @@
 
 # Workbooks
 
-## 1. [Introduction to Value Streams](workbooks/introductionToValueStreams.md)
+## 1. [Introduction to Value Streams](workbooks/introductionToValueStreams.md)   
+[![](workbooks/general/vsmGraphic.png)](workbooks/introductionToValueStreams.md)
 
 <br />
 
