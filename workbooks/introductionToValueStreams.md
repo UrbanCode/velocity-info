@@ -3,6 +3,9 @@
 ### Objective
 Create a value stream with Jira, Github, and Jenkins integrations and exercise it from beginning (a new issue in Backlog) to end (deployment to Prod).
 
+![](valueStream/valueStreamOverview.png)
+
+
 ### Summary
 We will start with the planning phase of our pipeline by focussing on Jira. We will need an instance of Jira to setup a Jira board and create a Jira card. We will create a Jira integration within Velocity and create a new value stream to work with this integration. We will finish the Jira section by seeing how changes to Jira cards are captured by an UrbanCode Velocity value stream.
 
@@ -50,9 +53,11 @@ Lastly, we will turn our attention to the final phase of deployment. We will nee
 
 # 1. Creating a New Value Stream
 
-  1.1 Navigate to the *Value Streams* page and click "Create"   
+Our first order of business is to create the value stream. All we want to do is create the value stream right now. We will come back to configure it after setting up Jira.
+
+  1. Navigate to the *Value Streams* page and click "Create"   
 ![Jenkins Global Config Page](valueStream/newValueStream/1.png)
-  1.2 Name your value stream and select a team for it. The workbook uses the name **"JKE App1"** and **"Default Team"**. A value stream description is optional.   
+  1. Name your value stream and select a team for it. The workbook uses the name **"JKE App1"** and **"Default Team"**. A value stream description is optional.   
 ![Jenkins Global Config Page](valueStream/newValueStream/2.png)
 
 
@@ -673,3 +678,7 @@ node {
 # 5. Conclusion
 
 We have successfully navigated an entire value stream from backlog to production deployment spread across four separate tools and systems: three external tools (Jira, GitHub, and Jenkins), and Velocity itself as a deployment tool. We learned about key UrbanCode Velocity concepts such as the vsm.json file with its stage queries, integrations, and linkRules, as well as pipelines and deployments. From here you can go back and begin experimenting with your value stream. One good place to start is by looking at the vsm.json file stages and queries. From there you can begin to shape the value stream to match your own processes.
+
+<figure class="video_container">
+<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSLTVmu37ghdpeiOPh0nQrTRRSLMPRQ5eB9Gpd6c_9y63-WPpca4hyUab-gaoG-pNK54PI2uuE8MWRc/embed?start=true&loop=true&delayms=3000" frameborder="0" width="1440" height="839" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+</figure>
