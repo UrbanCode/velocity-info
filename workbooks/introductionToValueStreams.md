@@ -130,6 +130,8 @@ See also [Jira plugin Documentation](https://www.urbancode.com/plugindoc/jira-4/
 
 Now that the integration has been added to Velocity, it can also be added to a specific value stream. UrbanCode Velocity value streams are fully configurable by downloading and uploading a value stream map (VSM) which is a specially crafted .json file. Save the vsm.json content provided below as a .json file. We wil then upload this file to configure our value stream.
 
+> **Because this json content references your Jira integration by name, the integration must be named "JKE Jira 1" and must be "online" before uploading it.**
+
 <!-- **Workbook vsm.json content - Save this json content to a file and upload to your value stream.** -->
 
 <figure class="video_container">
@@ -264,11 +266,11 @@ This section has focussed on the planning phase of our value stream. In this cas
 ## 3.1 Setting up a GitHub repository and Pull Request
 
 **GitHub requirements:**
-- Access to a GitHub repository
+- Access to a GitHub repository *(this workbook assumes a public repository)*
 - GitHub API token
 - A pull request (PR) that references the Jira issue in its name.
 
-A very easy option is to use a public GitHub account and repository. The repository contents do not matter, but a PR is required and must contain the issue ID of the Jira issue we are following in the PR name (the example here is "JKET-1"). The steps below are for creating a new PR.
+A very easy option is to use a public GitHub account and public repository. The repository contents do not matter, but a PR is required and must contain the issue ID of the Jira issue we are following in the PR name (the example here is "JKET-1"). The steps below are for creating a new PR.
 
 1. Edit any file in the repository. This example just edits a README file that can be edited by clicking on the pencil icon to the upper right of the file.   
     ![](github/pr1.png)
@@ -350,6 +352,8 @@ Use the vsm.json file to add the GitHub integration and a linkRule to the value 
 
 
 <!--
+This content was temporarily commented out to simplify workbook flow
+
 In this case, the stage query defined in the vsm.json allows one dot to lag behind based on Jira status, while the other dot moves ahead based on PR status. Both dots represent the same issue though, and are selected together. 
    ![](github/vsm/3.png)
 1. We can see from the Value Stream that the Jira card is now out-of-date and should be moved to "In Progress". In Jira, move the card from "Selected for Development" to "In Progress". Give enough time for Velocity to detect the change and update. The Jira status and PR state are now in agreement and should be a single dot inside the "In Progress" stage.
@@ -370,6 +374,7 @@ In this case, the stage query defined in the vsm.json allows one dot to lag behi
 
 
 <!--
+This content was temporarily commented out to simplify workbook flow
 
 The stage queries for this workbook allow Jira statuses to disagree with GitHub PRs and the dot to appear in different stages. This is configurable, but for the purpose of the workbook it highlights how Jira is a manual step that lags behind other process changes. This sections moves the dot from "In Progress" to "Merged" while keeping GitHub and Jira synchronized. You can also experiment with this section by allowing Jira to become outdated or ahead and observe how the value stream captures disagreement between systems.
 
@@ -418,7 +423,9 @@ UrbanCode Velocity value streams can include build and deployment data from Jenk
 
 6. Also in Jenkins, Provide credentials for a Jenkins user on whose behalf this plugin may access your Jenkins items.
 
-7. Click `Apply` and `save` before clicking the `Test Connection` button to confirm your connection to UrbanCode Velocity. Upon successful connection, your data will be posted to UrbanCode Velocity.   
+7. Depending on your version, you might need to provide a Velocity user access token to the Velocity plugin for Jenkins (the access token field is not shown in the screenshot below). This access token is created within Velocity and should be used uniquely by this Jenkins integration as its own authentication.
+
+8. Click `Apply` and `save` before clicking the `Test Connection` button to confirm your connection to UrbanCode Velocity. Upon successful connection, your data will be posted to UrbanCode Velocity.   
    ![Jenkins Global Config Page](jenkins/jenkins-config.PNG)
 
 ## 4.3 Adding a Jenkins Integration to a Value Stream
