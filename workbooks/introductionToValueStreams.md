@@ -13,7 +13,7 @@ As the issue transitions from the planning phase to the development phase we wil
 
 Lastly, we will turn our attention to the final phase of deployment. We will need a Jenkins instance for this equipped with an UrbanCode Velocity plugin. We will create a Jenkins integration within Velocity and define an application within our value streams pipeline. We will use jenkins jobs to build and deploy this application and observe the value stream as the work items continue on through build and deployments all the way to our production environment.
 
-*Questions or suggestions? Create an issue at https://github.com/urbancode/velocity-info/issues*
+*Questions or suggestions? Create an issue at [https://github.com/urbancode/velocity-info/issues](https://github.com/urbancode/velocity-info/issues)*
 
 ---
 
@@ -263,8 +263,7 @@ After setting up the Jira integration in Velocity and using the vsm.json file to
 
 This section has focussed on the planning phase of our value stream. In this case, we used Jira as our issue tracker. We created a Jira board and issue, setup a Jira integration, added that integration to a value stream, and observed how the value stream tracked Jira status changes throughout the planning phase. In theory, we could use Jira for every stage of our value stream; however, in practice, Jira cards are encumbered by manual updates and ulterior constraints. We can do  better than that! We can directly integrate with our other systems like GitHub and Jenkins to gain a real-time, fully automated, and accurate visualization of our work item's journey. Next up is our development phase where we will add a GitHub integration and see how Jira and GitHub can work in tandem.
 
-*Questions or suggestions? Create an issue at https://github.com/urbancode/velocity-info/issues*
-
+*Questions or suggestions? Create an issue at [https://github.com/urbancode/velocity-info/issues](https://github.com/urbancode/velocity-info/issues)*
 # 3. Working with GitHub
 
 ## 3.1 Setting up a GitHub repository and Pull Request
@@ -400,8 +399,7 @@ The stage queries for this workbook allow Jira statuses to disagree with GitHub 
 
 So far we have already gained value by observing our value stream across Jira and GitHub. Next we will see how Jenkins can integrate with UrbanCode Velocity's pipeline and value stream forming a powerful combination of build and deployment control and tracking.
 
-*Questions or suggestions? Create an issue at https://github.com/urbancode/velocity-info/issues*
-
+*Questions or suggestions? Create an issue at [https://github.com/urbancode/velocity-info/issues](https://github.com/urbancode/velocity-info/issues)*
 # 4. Working with Jenkins
 
 ## 4.1 Setting up Jenkins
@@ -692,7 +690,7 @@ node {
 
 We have successfully navigated an entire value stream from backlog to production deployment spread across four separate tools and systems: three external tools (Jira, GitHub, and Jenkins), and Velocity itself as a deployment tool. We learned about key UrbanCode Velocity concepts such as the vsm.json file with its stage queries, integrations, and linkRules, as well as pipelines and deployments. From here you can go back and begin experimenting with your value stream. One good place to start is by looking at the vsm.json file stages and queries. From there you can begin to shape the value stream to match your own processes.
 
-*Questions or suggestions? Create an issue at https://github.com/urbancode/velocity-info/issues*
+*Questions or suggestions? Create an issue at [https://github.com/urbancode/velocity-info/issues](https://github.com/urbancode/velocity-info/issues)*
 
 <!--
 <figure class="video_container">
