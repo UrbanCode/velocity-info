@@ -1,5 +1,5 @@
 
-## 1. Velocity errors when starting from Installer: continuous-release-ui, reporting-u unhealthy
+## 1. [Velocity errors when starting from Installer: continuous-release-ui, reporting-u unhealthy](https://github.com/UrbanCode/velocity-info/issues/7)
 
 Receiving this error when trying to start Velocity from installer...
 
@@ -37,7 +37,7 @@ This could have multiple root causes, here is some troubleshooting...
 
 
 
-## 2. security-api won't start and the container keeps restarting because it says the access or trial key i not valid.
+## [2. security-api won't start and the container keeps restarting because it says the access or trial key is not valid.](https://github.com/UrbanCode/velocity-info/issues/8)
 
 ### ANSWER
 
