@@ -13,7 +13,7 @@
 #### Also checkout the Velocity Website! 😀 [http://www.urbancode.com/](http://www.urbancode.com/)
 
 
-# FAQ
+# [FAQ (Frequently Asked Questions)](FAQ.md)
 
 <br />
 

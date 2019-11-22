@@ -1,5 +1,5 @@
 
-## Velocity errors when starting from Installer: continuous-release-ui, reporting-u unhealthy
+## 1. Velocity errors when starting from Installer: continuous-release-ui, reporting-u unhealthy
 
 Receiving this error when trying to start Velocity from installer...
 
@@ -19,7 +19,7 @@ Receiving this error when trying to start Velocity from installer...
 
 ---
 
-**ANSWER**
+### ANSWER
 
 This could have multiple root causes, here is some troubleshooting...
 
@@ -35,11 +35,12 @@ This could have multiple root causes, here is some troubleshooting...
 
 - If that doesn't work, run `docker-compose ps` to see which containers aren't healthy, then get the logs of those containers that are not healthy.
 
----
 
 
-## security-api won't start and the container keeps restarting because it says the access or trial key i not valid.
+## 2. security-api won't start and the container keeps restarting because it says the access or trial key i not valid.
 
-**ANSWER**
+### ANSWER
 
 A valid access or trial key is required to start security-api. This key can be provided as an environmental variable or through the database. The Velocity installer checks the validity of a key before installing, so that Velocity will only be configured with valid keys. Between the database and environmental variable keys, at least one must be valid. It is possible to not yet have a valid key in the database and for an invalid access or trial key to be introduced through an environmental variable that overrides the default configuration and prevents security-api from starting.
+
+
