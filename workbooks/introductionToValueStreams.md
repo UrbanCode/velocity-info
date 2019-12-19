@@ -160,7 +160,7 @@ Now that the integration has been added to Velocity, it can also be added to a s
         },
         {
           "name": "Selected For Development",
-          "query": "issue.status='Selected for Development' AND pr.status="
+          "query": "issue.status='Selected for Development' AND (pr.status!=open OR pr.status!=closed)"
         }
       ]
     },
