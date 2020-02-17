@@ -37,9 +37,8 @@
 
 # How to Contribute
 
-- Create an Issue (describe a use case, technique, or problem)
+1. Go to the velocity-info Issues page: https://github.com/UrbanCode/velocity-info/issues
+2. Create a new Issue describing your use case, technique, or problem.
 ![](workbooks/general/contribute_issue.png)
-
-- Propose changes with a PR (direct addition or modification of content pending review)
-![](workbooks/general/contribute_pr_1.png)
+3. Or, if you have a solution, propose changes with a Pull Request: https://github.com/UrbanCode/velocity-info/pulls
 ![](workbooks/general/contribute_pr_2.png)
