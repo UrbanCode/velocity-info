@@ -276,7 +276,7 @@ UrbanCode Velocity value streams are fully configurable by downloading and uploa
 >      },
 >      ...
 >```
-> ![Value Stream Graphic](/valueStream/phasesStages.png)
+> ![Value Stream Graphic](valueStream/phasesStages.png)
 >
 >
 >  - **Link Rules**
