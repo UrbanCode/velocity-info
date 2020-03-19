@@ -231,7 +231,7 @@ Now that the integration has been added to Velocity, it can also be added to a s
 >      },
 >      ...
 >```
-> ![Value Stream Graphic](/valueStream/phasesStages.png)
+> ![Value Stream Graphic](valueStream/phasesStages.png)
 >
 
 ### 2.3.2 Upload the vsm.json file.
