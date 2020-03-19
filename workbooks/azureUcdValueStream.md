@@ -131,8 +131,8 @@ Create a component for this workbook.
 ### 2.1.1 Configure Component and get Version from Azure
 First obtain the repository URL and generated credentials for this workbook's Azure git repo.
 
-![](\azure\repository-url-1.png)
-![](\azure\repository-url-2.png)
+![](azure/repository-url-1.png)
+![](azure/repository-url-2.png)
 
 
 Create an AzureWorkbook component within UCD. It is important that this component be configured as follows:
@@ -146,20 +146,20 @@ Create an AzureWorkbook component within UCD. It is important that this componen
   - Check **"Watch for Tags"**
   - Check **"Import Versions Automatically"**
 
-![](\ucd\azureWorkbook\component-config-1.png)
-![](\ucd\azureWorkbook\component-config-2.png)
-![](\ucd\azureWorkbook\component-config-3.png)
+![](ucd/azureWorkbook/component-config-1.png)
+![](ucd/azureWorkbook/component-config-2.png)
+![](ucd/azureWorkbook/component-config-3.png)
 
 Confirm that the component version was imported from the Azure tag we created when we ran the Azure pipeline earlier.
 
-![](\ucd\azureWorkbook\component-versions.png)
+![](ucd/azureWorkbook/component-versions.png)
 
 ## 2.1.2 Create Component Process
 
 We just need a bare minimum deploy process for this workbook. Make sure it is "Process Type" Deployment. The process itself will just be a one second wait (The wait step is available under utilities).
 
-![](\ucd\azureWorkbook\component-process-1.png)
-![](\ucd\azureWorkbook\component-process-2.png)
+![](ucd/azureWorkbook/component-process-1.png)
+![](ucd/azureWorkbook/component-process-2.png)
 
 
 ## 2.2 Create Workbook Application
@@ -170,21 +170,21 @@ Create an application and name it "AzureWorkbook".
 
 Create three environments. You can use the same base resource for each environment. It should contain an agent with the workbook component we just created.
 
-![](\ucd\azureWorkbook\application-env-1.png)
+![](ucd/azureWorkbook/application-env-1.png)
 
 ## 2.2.2 Create Application Process
 
 Create a bare minimum install process for the application to install our component.
 
-![](\ucd\azureWorkbook\application-process-1.png)
-![](\ucd\azureWorkbook\application-process-2.png)
+![](ucd/azureWorkbook/application-process-1.png)
+![](ucd/azureWorkbook/application-process-2.png)
 
 
 ## 2.3 Create UCD Access Token
 
 Navigate to `<UCD URL>/#security/tokens` ("Settings" --> "Tokens") and click "Create Token". Make sure to copy and save token to use later.
 
-![](\ucd\azureWorkbook\create-token.png)
+![](ucd/azureWorkbook/create-token.png)
 
 
 # 3. Setup Velocity
@@ -210,19 +210,19 @@ Navigate to `<Velocity URL>/settings/integrations`. Click "Plugins" and click "A
   - **UrbanCode Deploy Server URL:** Your UCD server URL. Note that if Velocity is running from a Docker-Compose instance replace "localhost" and/or 127.0.0.1 with "host.docker.internal".
   - **UrbanCode Deploy Access Token:** The UCD access token we previously created.]
 
-![](\velocity\add-integration-ucd.png)
+![](velocity/add-integration-ucd.png)
 
 ### 3.2.2 Upgrade UCD Integration
 
 After creating the integration, click on the vertical ellipses on the right of the integration's row and click "upgrade" if available.
 
-![](\velocity\integration-vertical-ellipses.png)
+![](velocity/integration-vertical-ellipses.png)
 
 ### 3.2.3 Add user to UCD Team
 
 UCD teams are imported into Velocity. Make sure that your Velocity user has access to the UCD resources for this workbook.
 
-![](\velocity\add-user-to-team-ucd.png)
+![](velocity/add-user-to-team-ucd.png)
 
 ## 3.3 Setup Azure within Velocity
 
@@ -262,7 +262,7 @@ Depending on your version of Velocity you might see an extra field for "Logger L
 
 After creating the integration, click on the vertical ellipses on the right of the integration's row and click "upgrade" if available.
 
-![](\velocity\integration-vertical-ellipses.png)
+![](velocity/integration-vertical-ellipses.png)
 
 ## 3.4 Create a Dummy Integration
 
@@ -471,15 +471,15 @@ After uploading the vsm.json file you should see the appropriate phases and stag
 
 On the Value Stream page, click "Pipeline" and click "Add App", then  choose "UrbanCode Deploy" from the dropdown. You will also need to select the application and process for this workbook.
 
-![](\velocity\pipeline-add-ucd.png)
+![](velocity/pipeline-add-ucd.png)
 
 ### 3.6.2 Map Environments
 
 Click on the "+" icon under each environment to map a UCD environment to the Velocity pipeline environment.
 
-![](\velocity\pipeline-with-ucd.png)
+![](velocity/pipeline-with-ucd.png)
 
-![](\velocity\pipeline-env-mapping.png)
+![](velocity/pipeline-env-mapping.png)
 
 # 4. Use the Value Stream from Planning to Merged
 
@@ -588,25 +588,25 @@ Wait for Velocity to sync. The dot will move to "Merged".
 
 In UCD, for the workbook application, click on the play icon on the left of the DEV environment to request a process.
 
-![](\ucd\env.png)
+![](ucd/env.png)
 
 We will run our "deploy" process that installs our component. We need to choose a component version though; click "Choose Versions".
 
-![](\ucd\env-request-process.png)
+![](ucd/env-request-process.png)
 
 We should be fine with choosing "Latest Available" for our version. This should give us the version we synced over to UCD from our Azure git tag created by our Azure pipeline.
 
-![](\ucd\env-request-process-version.png)
+![](ucd/env-request-process-version.png)
 
 The process should run and deploy the component. Click the camera icon for DEV to take a snapshot of the deployment.
 
-![](\ucd\env.png)
+![](ucd/env.png)
 
 ## 5.2 Deploy to Dev
 
 From UCD, click the play icon again except this time let's use our snapshot for the deployment.
 
-![](\ucd\env.png)
+![](ucd/env.png)
 
 Go back to Velocity and give it time to sync. The dot will move to the deployment stage for DEV.
 
