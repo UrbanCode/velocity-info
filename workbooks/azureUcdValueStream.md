@@ -588,7 +588,7 @@ Wait for Velocity to sync. The dot will move to "Merged".
 
 In UCD, for the workbook application, click on the play icon on the left of the DEV environment to request a process.
 
-![](ucd/env.png)
+![](ucd/env-request-process-circle.png)
 
 We will run our "deploy" process that installs our component. We need to choose a component version though; click "Choose Versions".
 
@@ -600,13 +600,13 @@ We should be fine with choosing "Latest Available" for our version. This should 
 
 The process should run and deploy the component. Click the camera icon for DEV to take a snapshot of the deployment.
 
-![](ucd/env.png)
+![](ucd/env-snapshot-circle.png)
 
 ## 5.2 Deploy to Dev
 
 From UCD, click the play icon again except this time let's use our snapshot for the deployment.
 
-![](ucd/env.png)
+![](ucd/env-request-process-circle.png)
 
 Go back to Velocity and give it time to sync. The dot will move to the deployment stage for DEV.
 
