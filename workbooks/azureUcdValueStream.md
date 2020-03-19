@@ -1,9 +1,9 @@
-# Creating an Azure and UrbanCode Deploy (UCD) Value Stream {ignore=true}
+# Creating an Azure and UrbanCode Deploy (UCD) Value Stream
 
-## Objective {ignore=true}
+## Objective
 Create a value stream with Azure and UrbanCode Deploy integrations and exercise it from beginning (a new issue) to end (deployment to Prod).
 
-## Workbook Guidelines {ignore=true}
+## Workbook Guidelines
 
 **< > Placeholders/Substitution**
 Placeholders should be indicated with angle brackets "<" and ">". For instance, if the workbook says navigate to `"https://dev.azure.com/\<your org name\>"`, and your Azure organization name is "SkyScubaDiving", then navigate to `"https://dev.azure.com/SkyScubaDiving"`.
@@ -14,7 +14,9 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=8 orderedList=false} -->
 
 <!-- code_chunk_output -->
+- [Creating an Azure and UrbanCode Deploy (UCD) Value Stream](#creating-an-azure-and-urbancode-deploy-ucd-value-stream)
   - [Objective](#objective)
+  - [Workbook Guidelines](#workbook-guidelines)
 - [1. Setup Azure](#1-setup-azure)
   - [1.1 Create Workbook Project](#11-create-workbook-project)
   - [1.2 Initialize Workbook Repository](#12-initialize-workbook-repository)
