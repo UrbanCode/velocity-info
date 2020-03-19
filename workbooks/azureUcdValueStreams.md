@@ -11,6 +11,10 @@ Placeholders should be indicated with angle brackets "<" and ">". For instance, 
 **🔀 Alternative Paths**
 Workbooks should guide users beyond rote exercise towards exploration and discovery. As you go through the workbook, there are certain steps intended to simplify the process; however, some alternative paths will be called out along the way.
 
+---
+
+**Table of contents**
+
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=8 orderedList=false} -->
 
 <!-- code_chunk_output -->
@@ -64,6 +68,7 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
 
 <!-- /code_chunk_output -->
 
+
 # 1. Setup Azure
 
 Requirements: 
@@ -114,7 +119,7 @@ We also want an Azure pipeline in this workbook to represent our build step. We 
 
 ## 1.4 Create an Azure Access Token
 
-Navigate to `https://dev.azure.com/<your org name>/_usersSettings/tokens`.
+Navigate to `https://dev.azure.com/<your org name>/_usersSettings/tokens`. Learn more about Azure Access tokens at [https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
 
 Create a new token. Give it a reasonable name an expiration date for your usage. The easiest option is to select "Full Access". Make sure to copy and save your key (you'll need it later in Velocity).
 
