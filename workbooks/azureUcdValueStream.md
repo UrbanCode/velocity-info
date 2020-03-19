@@ -24,43 +24,43 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
   - [1.4 Create an Azure Access Token](#14-create-an-azure-access-token)
 - [2. Setup UCD](#2-setup-ucd)
   - [2.1 Create Workbook Component](#21-create-workbook-component)
-  - [2.1.1 Configure Component](#211-configure-component)
-  - [2.1.2 Create Component Process](#212-create-component-process)
+    - [2.1.1 Configure Component and get Version from Azure](#211-configure-component-and-get-version-from-azure)
+    - [2.1.2 Create Component Process](#212-create-component-process)
   - [2.2 Create Workbook Application](#22-create-workbook-application)
-  - [2.2.1 Create Environments](#221-create-environments)
-  - [2.2.2 Create Application Process](#222-create-application-process)
+    - [2.2.1 Create Environments](#221-create-environments)
+    - [2.2.2 Create Application Process](#222-create-application-process)
   - [2.3 Create UCD Access Token](#23-create-ucd-access-token)
 - [3. Setup Velocity](#3-setup-velocity)
   - [3.1 Create a Velocity User Access Key](#31-create-a-velocity-user-access-key)
   - [3.2 Setup UCD within Velocity](#32-setup-ucd-within-velocity)
-  - [3.2.1 Create UCD Integration](#321-create-ucd-integration)
-  - [3.2.2 Upgrade UCD Integration](#322-upgrade-ucd-integration)
-  - [3.2.3 Add user to UCD Team](#323-add-user-to-ucd-team)
+    - [3.2.1 Create UCD Integration](#321-create-ucd-integration)
+    - [3.2.2 Upgrade UCD Integration](#322-upgrade-ucd-integration)
+    - [3.2.3 Add user to UCD Team](#323-add-user-to-ucd-team)
   - [3.3 Setup Azure within Velocity](#33-setup-azure-within-velocity)
-  - [3.3.1 Create Azure Integration](#331-create-azure-integration)
-  - [3.3.1 Upgrade Azure Integration](#331-upgrade-azure-integration)
+    - [3.3.1 Create Azure Integration](#331-create-azure-integration)
+    - [3.3.2 Upgrade Azure Integration](#332-upgrade-azure-integration)
   - [3.4 Create a Dummy Integration](#34-create-a-dummy-integration)
   - [3.5 Create a New Value Stream](#35-create-a-new-value-stream)
-  - [3.5.1 Create a vsm.json file](#351-create-a-vsmjson-file)
-  - [3.5.2 Upload the vsm.json File](#352-upload-the-vsmjson-file)
+    - [3.5.1 Create a vsm.json file](#351-create-a-vsmjson-file)
+    - [3.5.2 Upload the vsm.json File](#352-upload-the-vsmjson-file)
   - [3.6 Configure the Value Stream Pipeline](#36-configure-the-value-stream-pipeline)
-  - [3.6.1 Add UCD to the Pipeline](#361-add-ucd-to-the-pipeline)
-  - [3.6.2 Map Environments](#362-map-environments)
-- [4. Use Value Stream: Planning to Merged](#4-use-value-stream-planning-to-merged)
-  - [4.1 Backlog (create a new work item)](#41-backlog-create-a-new-work-item)
-  - [4.3 In Progress](#43-in-progress)
-  - [4.4 In Review](#44-in-review)
-  - [4.4.1 Create a new Branch](#441-create-a-new-branch)
-  - [4.4.2 Make Changes to the Branch](#442-make-changes-to-the-branch)
-  - [4.4.3 Commit Changes](#443-commit-changes)
-  - [4.4.4 Create Pull Request](#444-create-pull-request)
-  - [4.4.5 Observe Dot](#445-observe-dot)
-  - [4.5 Merging Changes](#45-merging-changes)
-- [5. Use Value Stream: Deployment](#5-use-value-stream-deployment)
+    - [3.6.1 Add UCD to the Pipeline](#361-add-ucd-to-the-pipeline)
+    - [3.6.2 Map Environments](#362-map-environments)
+- [4. Use the Value Stream from Planning to Merged](#4-use-the-value-stream-from-planning-to-merged)
+  - [4.1 Backlog](#41-backlog)
+  - [4.2 In Progress](#42-in-progress)
+  - [4.3 In Review](#43-in-review)
+    - [4.3.1 Create a new Branch](#431-create-a-new-branch)
+    - [4.3.2 Make Changes to the Branch](#432-make-changes-to-the-branch)
+    - [4.3.3 Commit Changes](#433-commit-changes)
+    - [4.3.4 Create Pull Request](#434-create-pull-request)
+    - [4.3.5 Observe Dot](#435-observe-dot)
+  - [4.4 Merged](#44-merged)
+- [5. Use the Value Stream for Deployments](#5-use-the-value-stream-for-deployments)
   - [5.1 Create a UCD snapshot](#51-create-a-ucd-snapshot)
-  - [5.1 Deploy to Dev](#51-deploy-to-dev)
-  - [5.2 Deploy to QA](#52-deploy-to-qa)
-  - [5.3 Deploy to Prod](#53-deploy-to-prod)
+  - [5.2 Deploy to Dev](#52-deploy-to-dev)
+  - [5.3 Deploy to QA](#53-deploy-to-qa)
+  - [5.4 Deploy to Prod](#54-deploy-to-prod)
 
 <!-- /code_chunk_output -->
 
@@ -128,7 +128,7 @@ UCD should already be setup with an available agent. We will setup a component a
 
 Create a component for this workbook.
 
-## 2.1.1 Configure Component
+### 2.1.1 Configure Component and get Version from Azure
 First obtain the repository URL and generated credentials for this workbook's Azure git repo.
 
 ![](\azure\repository-url-1.png)
@@ -202,7 +202,7 @@ Navigate to `<Velocity URL>/settings/myprofile` to create a user access key. Nam
 
 ## 3.2 Setup UCD within Velocity
 
-## 3.2.1 Create UCD Integration
+### 3.2.1 Create UCD Integration
 
 Navigate to `<Velocity URL>/settings/integrations`. Click "Plugins" and click "Add Integration" for the "UrbanCode Deploy" plugin. Fill out the fields as shown below:
 
@@ -212,13 +212,13 @@ Navigate to `<Velocity URL>/settings/integrations`. Click "Plugins" and click "A
 
 ![](\velocity\add-integration-ucd.png)
 
-## 3.2.2 Upgrade UCD Integration
+### 3.2.2 Upgrade UCD Integration
 
 After creating the integration, click on the vertical ellipses on the right of the integration's row and click "upgrade" if available.
 
 ![](\velocity\integration-vertical-ellipses.png)
 
-## 3.2.3 Add user to UCD Team
+### 3.2.3 Add user to UCD Team
 
 UCD teams are imported into Velocity. Make sure that your Velocity user has access to the UCD resources for this workbook.
 
@@ -226,7 +226,7 @@ UCD teams are imported into Velocity. Make sure that your Velocity user has acce
 
 ## 3.3 Setup Azure within Velocity
 
-## 3.3.1 Create Azure Integration
+### 3.3.1 Create Azure Integration
 
 Navigate to `<Velocity URL>/settings/integrations`. Click "Plugins" and click "Add Integration" for the Azure plugin.
 
@@ -258,7 +258,7 @@ Depending on your version of Velocity you might see an extra field for "Logger L
 
 ![](velocity/add-integration-azure-form-5.png)
 
-## 3.3.1 Upgrade Azure Integration
+### 3.3.2 Upgrade Azure Integration
 
 After creating the integration, click on the vertical ellipses on the right of the integration's row and click "upgrade" if available.
 
@@ -282,7 +282,7 @@ Because of the way we are going to configure our value stream, this workbook req
 | Description | value stream description | no | 
 | Team | Team of users who can access this value stream. | yes | 
 
-## 3.5.1 Create a vsm.json file
+### 3.5.1 Create a vsm.json file
 
 UrbanCode Velocity value streams are fully configurable by downloading and uploading a value stream map (VSM) json file. Save the vsm.json content provided below as a .json file. We will then upload this file to configure our value stream.
 
@@ -450,7 +450,7 @@ UrbanCode Velocity value streams are fully configurable by downloading and uploa
 >
 
 
-## 3.5.2 Upload the vsm.json File
+### 3.5.2 Upload the vsm.json File
 
 If you have a brand-new value stream, then the upload button will be directly available.
 
@@ -467,13 +467,13 @@ After uploading the vsm.json file you should see the appropriate phases and stag
 
 ## 3.6 Configure the Value Stream Pipeline
 
-## 3.6.1 Add UCD to the Pipeline
+### 3.6.1 Add UCD to the Pipeline
 
 On the Value Stream page, click "Pipeline" and click "Add App", then  choose "UrbanCode Deploy" from the dropdown. You will also need to select the application and process for this workbook.
 
 ![](\velocity\pipeline-add-ucd.png)
 
-## 3.6.2 Map Environments
+### 3.6.2 Map Environments
 
 Click on the "+" icon under each environment to map a UCD environment to the Velocity pipeline environment.
 
@@ -481,7 +481,7 @@ Click on the "+" icon under each environment to map a UCD environment to the Vel
 
 ![](\velocity\pipeline-env-mapping.png)
 
-# 4. Use Value Stream: Planning to Merged
+# 4. Use the Value Stream from Planning to Merged
 
 Shew, that was a lot of setup. Now let's get that dot moving!
 
@@ -490,7 +490,7 @@ Shew, that was a lot of setup. Now let's get that dot moving!
 > ![](AzureValueStream/integration-sync.png)
 
 
-## 4.1 Backlog (create a new work item)
+## 4.1 Backlog
 
 As observed above, our value stream has a bunch of stages but no dots, that's perfectly accurate for our empty board in Azure. Click on "New Item" to create a new work item.
 
@@ -516,7 +516,7 @@ Now our dot is a happy little dot 😇 (and we see the beginnings of its history
 
 ![](AzureValueStream/2b3.png)
 
-## 4.3 In Progress
+## 4.2 In Progress
 
 Turns out, we are in fact doing the workbook :) so grab that "do the workbook" card from the backlog and move it to "active".
 
@@ -526,11 +526,11 @@ Wait for Velocity to sync (or force with disable/enable). The dot will move to "
 
 ![](AzureValueStream/3-dot-in-progress.png)
 
-## 4.4 In Review
+## 4.3 In Review
 
 Now that the card is active, we have to do some actual work to move the dot to review. That's a good thing; Velocity is a lot more than just moving cards around!
 
-## 4.4.1 Create a new Branch
+### 4.3.1 Create a new Branch
 
 Navigate to branches in Azure and click "New branch".
 
@@ -538,7 +538,7 @@ Navigate to branches in Azure and click "New branch".
 
 The branch name doesn't really matter; you can just name it "workbook". Click create.
 
-## 4.4.2 Make Changes to the Branch
+### 4.3.2 Make Changes to the Branch
 
 ![](AzureValueStream/4-new-branch-2.png)
 
@@ -546,13 +546,13 @@ Once the branch is created we can directly edit the `README.md` file from Azure.
 
 ![](AzureValueStream/4-edit-branch.png)
 
-## 4.4.3 Commit Changes
+## 4.3.3 Commit Changes
 
 Once you've made changes click "Commit".
 
 ![](AzureValueStream/4-make-commit.png)
 
-## 4.4.4 Create Pull Request
+### 4.3.4 Create Pull Request
 
 After committing changes our branch is now different than master. That's great, we've added value! Click "Create a Pull Request".
 
@@ -562,13 +562,13 @@ For the most part, the default values are fine for the Pull Request (PR), except
 
 ![](AzureValueStream/4-create-pr-2.png)
 
-## 4.4.5 Observe Dot
+### 4.3.5 Observe Dot
 
 Wait for Velocity to sync (or disable/enable integration). The dot will move from "In Progress" to "In Review".
 
 ![](AzureValueStream/4-dot-in-review.png)
 
-## 4.5 Merging Changes
+## 4.4 Merged
 
 You have reviewed your changes and lo, they are beyond perfect, even sublime. Your PR is approved, go ahead and merge (click "Complete").
 
@@ -582,7 +582,7 @@ Wait for Velocity to sync. The dot will move to "Merged".
 
 ![](AzureValueStream/5-dot-merged.png)
 
-# 5. Use Value Stream: Deployment
+# 5. Use the Value Stream with Deployments
 
 ## 5.1 Create a UCD snapshot
 
@@ -602,7 +602,7 @@ The process should run and deploy the component. Click the camera icon for DEV t
 
 ![](\ucd\env.png)
 
-## 5.1 Deploy to Dev
+## 5.2 Deploy to Dev
 
 From UCD, click the play icon again except this time let's use our snapshot for the deployment.
 
@@ -610,10 +610,10 @@ From UCD, click the play icon again except this time let's use our snapshot for 
 
 Go back to Velocity and give it time to sync. The dot will move to the deployment stage for DEV.
 
-## 5.2 Deploy to QA
+## 5.3 Deploy to QA
 
 From Velocity, go to our pipeline. Click the play icon for QA. Give it time to run and sync, then navigate back to the value stream and observe the dot in QA.
 
-## 5.3 Deploy to Prod
+## 5.4 Deploy to Prod
 
 Finally, use the Velocity pipeline to deploy to PROD. Observe the dot move to PROD. We have completed the value stream at this point from planning to production.
