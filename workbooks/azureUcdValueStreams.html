@@ -1,0 +1,863 @@
+<!DOCTYPE html><html><head>
+      <title>azureUcdValueStreams</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\daniel-trow\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.5.2\node_modules\@shd101wyy\mume\dependencies\katex\katex.min.css">
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+
+      <style>
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}
+
+/* highlight */
+pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+pre[data-line] .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+pre[data-line] .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%,.08);
+  background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+pre[data-line] .line-highlight:before, 
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: .4em;
+  left: .6em;
+  min-width: 1em;
+  padding: 0 .5em;
+  background-color: hsla(24, 20%, 50%,.4);
+  color: hsl(24, 20%, 95%);
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: .3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px white;
+}
+
+pre[data-line] .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: .4em;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="creating-an-azure-and-urbancode-deploy-ucd-value-stream">Creating an Azure and UrbanCode Deploy (UCD) Value Stream</h1>
+
+<h2 class="mume-header" id="objective">Objective</h2>
+
+<p>Create a value stream with Azure and UrbanCode Deploy integrations and exercise it from beginning (a new issue) to end (deployment to Prod).</p>
+<h2 class="mume-header" id="workbook-guidelines">Workbook Guidelines</h2>
+
+<p><strong>&lt; &gt; Placeholders/Substitution</strong><br>
+Placeholders should be indicated with angle brackets &quot;&lt;&quot; and &quot;&gt;&quot;. For instance, if the workbook says navigate to <code>&quot;https://dev.azure.com/\&lt;your org name\&gt;&quot;</code>, and your Azure organization name is &quot;SkyScubaDiving&quot;, then navigate to <code>&quot;https://dev.azure.com/SkyScubaDiving&quot;</code>.</p>
+<p><strong>&#x1F500; Alternative Paths</strong><br>
+Workbooks should guide users beyond rote exercise towards exploration and discovery. As you go through the workbook, there are certain steps intended to simplify the process; however, some alternative paths will be called out along the way.</p>
+<hr>
+<p><strong>Table of contents</strong></p>
+<div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>&#x25B6;&#xFE0E;</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
+<li><a href="#creating-an-azure-and-urbancode-deploy-ucd-value-stream">Creating an Azure and UrbanCode Deploy (UCD) Value Stream</a>
+<ul>
+<li><a href="#objective">Objective</a></li>
+<li><a href="#workbook-guidelines">Workbook Guidelines</a></li>
+</ul>
+</li>
+<li><a href="#1-setup-azure">1. Setup Azure</a>
+<ul>
+<li><a href="#11-create-workbook-project">1.1 Create Workbook Project</a></li>
+<li><a href="#12-initialize-workbook-repository">1.2 Initialize Workbook Repository</a></li>
+<li><a href="#13-setup-workbook-pipeline">1.3 Setup Workbook Pipeline</a></li>
+<li><a href="#14-create-an-azure-access-token">1.4 Create an Azure Access Token</a></li>
+</ul>
+</li>
+<li><a href="#2-setup-ucd">2. Setup UCD</a>
+<ul>
+<li><a href="#21-create-workbook-component">2.1 Create Workbook Component</a>
+<ul>
+<li><a href="#211-configure-component-and-get-version-from-azure">2.1.1 Configure Component and get Version from Azure</a></li>
+<li><a href="#212-create-component-process">2.1.2 Create Component Process</a></li>
+</ul>
+</li>
+<li><a href="#22-create-workbook-application">2.2 Create Workbook Application</a>
+<ul>
+<li><a href="#221-create-application-process">2.2.1 Create Application Process</a></li>
+<li><a href="#222-create-environments">2.2.2 Create Environments</a></li>
+<li><a href="#23-create-ucd-access-token">2.3 Create UCD Access Token</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#3-setup-velocity">3. Setup Velocity</a>
+<ul>
+<li><a href="#31-create-a-velocity-user-access-key">3.1 Create a Velocity User Access Key</a></li>
+<li><a href="#32-setup-ucd-within-velocity">3.2 Setup UCD within Velocity</a>
+<ul>
+<li><a href="#321-create-ucd-integration">3.2.1 Create UCD Integration</a></li>
+<li><a href="#322-allow-time-for-ucd-to-sync">3.2.2 Allow Time for UCD to Sync</a></li>
+<li><a href="#323-add-user-to-ucd-team">3.2.3 Add user to UCD Team</a></li>
+</ul>
+</li>
+<li><a href="#33-setup-azure-within-velocity">3.3 Setup Azure within Velocity</a>
+<ul>
+<li><a href="#331-create-azure-integration">3.3.1 Create Azure Integration</a></li>
+<li><a href="#332-upgrade-azure-integration">3.3.2 Upgrade Azure Integration</a></li>
+</ul>
+</li>
+<li><a href="#34-create-a-dummy-integration">3.4 Create a Dummy Integration</a></li>
+<li><a href="#35-create-a-new-value-stream">3.5 Create a New Value Stream</a>
+<ul>
+<li><a href="#351-create-a-vsmjson-file">3.5.1 Create a vsm.json file</a></li>
+<li><a href="#352-upload-the-vsmjson-file">3.5.2 Upload the vsm.json File</a></li>
+</ul>
+</li>
+<li><a href="#36-configure-the-value-stream-pipeline">3.6 Configure the Value Stream Pipeline</a>
+<ul>
+<li><a href="#361-add-ucd-to-the-pipeline">3.6.1 Add UCD to the Pipeline</a></li>
+<li><a href="#362-map-environments">3.6.2 Map Environments</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#4-use-the-value-stream-from-planning-to-merged">4. Use the Value Stream from Planning to Merged</a>
+<ul>
+<li><a href="#41-backlog">4.1 Backlog</a></li>
+<li><a href="#42-in-progress">4.2 In Progress</a></li>
+<li><a href="#43-in-review">4.3 In Review</a>
+<ul>
+<li><a href="#431-create-a-new-branch">4.3.1 Create a new Branch</a></li>
+<li><a href="#432-make-changes-to-the-branch">4.3.2 Make Changes to the Branch</a></li>
+<li><a href="#433-commit-changes">4.3.3 Commit Changes</a></li>
+<li><a href="#434-create-pull-request">4.3.4 Create Pull Request</a></li>
+<li><a href="#435-observe-dot">4.3.5 Observe Dot</a></li>
+</ul>
+</li>
+<li><a href="#44-merged">4.4 Merged</a></li>
+</ul>
+</li>
+<li><a href="#5-use-the-value-stream-with-deployments">5. Use the Value Stream with Deployments</a>
+<ul>
+<li><a href="#51-create-a-ucd-snapshot">5.1 Create a UCD snapshot</a></li>
+<li><a href="#52-deploy-to-dev">5.2 Deploy to Dev</a></li>
+<li><a href="#53-deploy-to-qa">5.3 Deploy to QA</a></li>
+<li><a href="#54-deploy-to-prod">5.4 Deploy to Prod</a></li>
+</ul>
+</li>
+</ul>
+<h1 class="mume-header" id="1-setup-azure">1. Setup Azure</h1>
+
+<p>Requirements:</p>
+<ol>
+<li>Azure account with ability to create a new project.</li>
+</ol>
+<p>For this workbook, you will need an Azure project with work items, an Azure git repository, and a build pipeline that creates repository tags whens it runs. <strong>The Azure project name must match you UCD application name.</strong> You will also need an Azure access token. The following steps demonstrate the minimum setup.</p>
+<p>(&#x1F500; Alternative: See how far you can get with an existing project and/or repository)</p>
+<h2 class="mume-header" id="11-create-workbook-project">1.1 Create Workbook Project</h2>
+
+<p>Navigate to <code>https://dev.azure.com/&lt;your org name&gt;</code> to create a new project. To learn more about creating Azure projects visit  <a href="https://docs.microsoft.com/en-us/azure/devops/organizations/projects/create-project">https://docs.microsoft.com/en-us/azure/devops/organizations/projects/create-project</a></p>
+<p>Configure your new project as follows:</p>
+<ul>
+<li><em>Project Name:</em> AzureWorkbook <strong>(must match UCD application name)</strong></li>
+<li><em>Visibility:</em> Private</li>
+<li><em>Version Control:</em> Git</li>
+<li><em>Work item process:</em> Agile</li>
+</ul>
+<p><img src="azure/new-project-2.png" alt></p>
+<h2 class="mume-header" id="12-initialize-workbook-repository">1.2 Initialize Workbook Repository</h2>
+
+<p>In your new project, navigate to &quot;Repos&quot; to create a new repository. It can be the bare minimum, so just &quot;initialize with a README or gitignore&quot;.</p>
+<p><img src="azure/new-repo-1.png" alt></p>
+<h2 class="mume-header" id="13-setup-workbook-pipeline">1.3 Setup Workbook Pipeline</h2>
+
+<p>We also want an Azure pipeline in this workbook to represent our build step. We need to set that up with a little secret sauce: we want successful runs to tag our repo. You can learn more about Azure pipelines at <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline">https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline</a>.</p>
+<ol>
+<li>Navigate to Pipelines and click &quot;Create Pipeline&quot;, select &quot;Azure Repos Git&quot;, and select &quot;AzureWorkbook&quot; as the repository we just created.</li>
+</ol>
+<p><img src="azure/new-pipeline-2.png" alt><br>
+<img src="azure/new-pipeline-3.png" alt></p>
+<ol start="2">
+<li>The default &quot;hello world&quot; .yml is good enough for this workbook&apos;s pipeline. Click save (avoid running for now).</li>
+</ol>
+<p><img src="azure/new-pipeline-4.png" alt></p>
+<ol start="3">
+<li>After the pipeline is created we need to setup repository tagging. Click &quot;edit&quot; from the pipeline view.</li>
+</ol>
+<p><img src="azure/new-pipeline-5.png" alt></p>
+<ol start="4">
+<li>After clicking edit you should see the yml. Click on the vertical ellipsis in the upper right beside &quot;Run&quot; and click &quot;Triggers&quot; from the dropdown.</li>
+</ol>
+<p><img src="azure/new-pipeline-6.png" alt></p>
+<ol start="5">
+<li>There&apos;s a lot to unpack here, but we&apos;re going to be laser focussed on one thing right now. Click <strong>&quot;YAML&quot;</strong> on the left of the upper horizontal tabs. Click <strong>&quot;Get Sources&quot;</strong> under YAML. Scroll down in the menu that shows on the right. Under <strong>&quot;Tag sources&quot;</strong> click <strong>&quot;On Success&quot;</strong>. Go ahead and click <strong>&quot;Save &amp; queue&quot;</strong>. Our pipeline should now create repository tags for successful builds, and since we queued it, we should have a build pending.</li>
+</ol>
+<p><img src="azure/new-pipeline-7.png" alt></p>
+<ol start="6">
+<li>Confirm that the pipeline ran successfully and created a tag for the repository.</li>
+</ol>
+<p><img src="azure/repo-tags-1.png" alt></p>
+<h2 class="mume-header" id="14-create-an-azure-access-token">1.4 Create an Azure Access Token</h2>
+
+<p>Navigate to <code>https://dev.azure.com/&lt;your org name&gt;/_usersSettings/tokens</code>. Learn more about Azure Access tokens at <a href="https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate">https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate</a></p>
+<p>Create a new token. Give it a reasonable name an expiration date for your usage. The easiest option is to select &quot;Full Access&quot;. Make sure to copy and save your key (you&apos;ll need it later in Velocity).</p>
+<p><img src="azure/access-token-2.png" alt></p>
+<h1 class="mume-header" id="2-setup-ucd">2. Setup UCD</h1>
+
+<p>UCD should already be setup with an agent. We will setup a component and application for this workbook.</p>
+<h2 class="mume-header" id="21-create-workbook-component">2.1 Create Workbook Component</h2>
+
+<h3 class="mume-header" id="211-configure-component-to-get-version-from-azure">2.1.1 Configure Component to get Version from Azure</h3>
+
+<p>First obtain the repository URL and generated credentials for this workbook&apos;s Azure git repo.</p>
+<p><img src="azure/repository-url-1.png" alt><br>
+<img src="azure/repository-url-2.png" alt></p>
+<p>Create an AzureWorkbook component within UCD. It is important that this component be configured as follows:</p>
+<ul>
+<li><strong>Name:</strong> something like AzureWorkbookComponent</li>
+<li><strong>Source Configuration Type:</strong> Git</li>
+<li><strong>Repository URL:</strong> <code>https://dev.azure.com/&lt;org name&gt;/AzureWorkbook/_git/AzureWorkbook</code> (note: <strong>If you copied this URL from Azure make sure to remove any user name portion &quot;&lt;user name&gt;@&quot;</strong>)</li>
+<li><strong>User name:</strong> Copied from Azure git repo&apos;s generated credentials</li>
+<li><strong>Password:</strong> Copied from Azure git repo&apos;s generated credentials</li>
+<li>Check <strong>&quot;Watch for Tags&quot;</strong></li>
+<li>Check <strong>&quot;Import Versions Automatically&quot;</strong></li>
+</ul>
+<p><img src="ucd/azureWorkbook/component-config-1.png" alt></p>
+<p><img src="ucd/azureWorkbook/component-config-2.png" alt></p>
+<p><img src="ucd/azureWorkbook/component-config-3.png" alt></p>
+<p>Confirm that the component version was imported from the Azure tag we created when we ran the Azure pipeline earlier.</p>
+<p><img src="ucd/azureWorkbook/component-versions.png" alt></p>
+<h3 class="mume-header" id="212-create-component-process">2.1.2 Create Component Process</h3>
+
+<p>We just need a bare minimum deploy process for this workbook. Make sure it is &quot;Process Type&quot; Deployment. The process itself will just be a one second wait (The wait step is available under utilities).</p>
+<p><img src="ucd/azureWorkbook/component-process-1.png" alt></p>
+<p><img src="ucd/azureWorkbook/component-process-2.png" alt></p>
+<h2 class="mume-header" id="22-create-workbook-application-with-component">2.2 Create Workbook Application with Component</h2>
+
+<p>Create an application and name it &quot;AzureWorkbook&quot;. <strong>It is important that the UCD application name matches the Azure project name.</strong> Make sure to add the workbook component to the application.</p>
+<p><img src="ucd/azureWorkbook/app-add-component.png" alt></p>
+<h3 class="mume-header" id="221-create-application-process">2.2.1 Create Application Process</h3>
+
+<p>Create a bare minimum install process for the application to install our component.</p>
+<p><img src="ucd/azureWorkbook/application-process-1.png" alt></p>
+<p><img src="ucd/azureWorkbook/application-process-2.png" alt></p>
+<h3 class="mume-header" id="222-create-environments">2.2.2 Create Environments</h3>
+
+<p>Create three environments named <strong>&quot;DEV&quot;, &quot;QA&quot;, and &quot;PROD&quot;</strong>. You can use the same base resource for each environment. Each should contain an agent with the workbook component we just created.</p>
+<p><img src="ucd/azureWorkbook/create-env.png" alt></p>
+<p><img src="ucd/azureWorkbook/application-env-1.png" alt></p>
+<h3 class="mume-header" id="23-create-ucd-access-token">2.3 Create UCD Access Token</h3>
+
+<p>Navigate to <code>&lt;UCD URL&gt;/#security/tokens</code> (&quot;Settings&quot; --&gt; &quot;Tokens&quot;) and click <strong>&quot;Create Token&quot;</strong>. Make sure to copy and save token to use later.</p>
+<p><img src="ucd/azureWorkbook/create-token.png" alt></p>
+<h1 class="mume-header" id="3-setup-velocity">3. Setup Velocity</h1>
+
+<p>Requirements:</p>
+<ol>
+<li>Access to Velocity user with full permissions.</li>
+</ol>
+<h2 class="mume-header" id="31-create-a-velocity-user-access-key">3.1 Create a Velocity User Access Key</h2>
+
+<p>Navigate to <code>&lt;Velocity URL&gt;/settings/myprofile</code> to create a user access key. Name the key so you can identify and delete it later if needed. <strong>Make sure to copy the access key for future use.</strong></p>
+<p><img src="velocity/access-key-1.png" alt></p>
+<h2 class="mume-header" id="32-setup-ucd-within-velocity">3.2 Setup UCD within Velocity</h2>
+
+<h3 class="mume-header" id="321-create-ucd-integration">3.2.1 Create UCD Integration</h3>
+
+<p>Navigate to <code>&lt;Velocity URL&gt;/settings/integrations</code>. Click <strong>&quot;Plugins&quot;</strong> and click <strong>&quot;Add Integration&quot;</strong> for the <strong>&quot;UrbanCode Deploy&quot;</strong> plugin. Fill out the fields as shown below:</p>
+<ul>
+<li><strong>Name:</strong> something like &quot;UcdWorkbook&quot;</li>
+<li><strong>UrbanCode Deploy Server URL:</strong> Your UCD server URL</li>
+</ul>
+<blockquote>
+<p>Note: Consider containerized networking. For instance, if Velocity is running from a Docker-Compose container and UCD is running at &quot;localhost&quot; then use &quot;host.docker.internal&quot; in place of &quot;localhost&quot;.</p>
+</blockquote>
+<ul>
+<li><strong>UrbanCode Deploy Access Token:</strong> The UCD access token we previously created.</li>
+</ul>
+<p><img src="velocity/add-integration-ucd.png" alt></p>
+<h3 class="mume-header" id="322-allow-time-for-ucd-to-sync">3.2.2 Allow Time for UCD to Sync</h3>
+
+<p>Before proceeding, it is important to <strong>allow time for the UCD integration to sync</strong>.</p>
+<p><img src="velocity/integration-ucd-sync.png" alt></p>
+<h3 class="mume-header" id="323-add-user-to-ucd-team">3.2.3 Add user to UCD Team</h3>
+
+<p>UCD teams are imported into Velocity. Make sure that your Velocity user has access to the UCD resources for this workbook.</p>
+<p><img src="velocity/add-user-to-team-ucd.png" alt></p>
+<h2 class="mume-header" id="33-setup-azure-within-velocity">3.3 Setup Azure within Velocity</h2>
+
+<h3 class="mume-header" id="331-create-azure-integration">3.3.1 Create Azure Integration</h3>
+
+<p>Navigate to <code>&lt;Velocity URL&gt;/settings/integrations</code>. Click &quot;Plugins&quot; and click &quot;Add Integration&quot; for the Azure plugin.</p>
+<p><img src="velocity/add-integration-azure.png" alt></p>
+<ul>
+<li><strong>Integration Name:</strong> Use &quot;AzureWorkbook&quot; to match the vsm.json file that we&apos;ll use later.</li>
+<li><strong>Loggin level:</strong> &quot;INFO&quot;</li>
+<li><strong>UrbanCode Velocity User Access Key:</strong> Use the velocity user access key that we just created.</li>
+</ul>
+<p><img src="velocity/add-integration-azure-form-1.png" alt></p>
+<ul>
+<li><strong>URL:</strong> The Azure URL: <a href="https://dev.azure.com">https://dev.azure.com</a></li>
+<li><strong>Username:</strong> What you use to login to Azure. Usually an email address.</li>
+</ul>
+<p><img src="velocity/add-integration-azure-form-2.png" alt></p>
+<ul>
+<li><strong>Password:</strong> leave blank (using access token instead)</li>
+<li><strong>Access Token:</strong> Paste the Azure access token we created earlier.</li>
+</ul>
+<p><img src="velocity/add-integration-azure-form-3.png" alt></p>
+<ul>
+<li><strong>Organization:</strong> You Azure organization name. Can be obtained and confirmed with your Azure home URL: <code>https://dev.azure.com/&lt;your org name&gt;</code>.</li>
+<li><strong>Project:</strong> Your Azure project name. Use &quot;AzureWorkbook&quot; for the workbook. This can be derived and confirmed against the project URL: <code>https://dev.azure.com/&lt;your org name&gt;/&lt;project name&gt;</code></li>
+<li><strong>Repositories:</strong> You Azure repository (repo) name. Use &quot;AzureWorkbook&quot; for the workbook. This can be derived and confirmed against the repo URL: <code>https://dev.azure.com/&lt;your org name&gt;/_git/&lt;repo name&gt;</code></li>
+</ul>
+<p><img src="velocity/add-integration-azure-form-4.png" alt></p>
+<p>Depending on your version of Velocity you might see an extra field for &quot;Logger Level&quot; at the button of the form. You can leave this blank.</p>
+<p><img src="velocity/add-integration-azure-form-5.png" alt></p>
+<h3 class="mume-header" id="332-upgrade-azure-integration">3.3.2 Upgrade Azure Integration</h3>
+
+<p><strong>It is important to use the latest version of the Azure plugin for this workbook.</strong> After creating the integration, click on the vertical ellipses on the right of the integration&apos;s row and click &quot;upgrade&quot; (if &quot;upgrade&quot; is not shown in the dropdown then the plugin is already updated to latest).</p>
+<blockquote>
+<p>A blue dot appears to the left of integrations whenever an upgrade is available.</p>
+</blockquote>
+<p><img src="velocity/integration-vertical-ellipses.png" alt></p>
+<h2 class="mume-header" id="34-create-a-dummy-integration">3.4 Create a Dummy Integration</h2>
+
+<p>Because of the way we are going to configure our value stream, this workbook requires a dummy integration. Add another integration from the integrations page by Clicking on &quot;Plugins&quot; and &quot;Add Integration&quot; for any plugin. Name the integration &quot;dummyIntegration&quot; (must match vsm.json configuration used later). The rest of the dummyIntegration&apos;s configuration does not matter so long as it gets created.</p>
+<p>Go ahead and disable the dummyIntegration after creating it. Its status does not matter. <strong>We should now have three integrations: &quot;AzureWorkbook&quot;, &quot;dummyIntegration&quot;, and our UCD integration.</strong></p>
+<p><img src="AzureValueStream/integration-summary.png" alt></p>
+<h2 class="mume-header" id="35-create-a-new-value-stream">3.5 Create a New Value Stream</h2>
+
+<ol>
+<li>
+<p>Navigate to the <em>Value Streams</em> page and click &quot;Create&quot;<br>
+<img src="valueStream/newValueStream/1.png" alt="Jenkins Global Config Page"></p>
+</li>
+<li>
+<p>Name your value stream and select a team for it. The workbook uses the name <strong>&quot;Azure Workbook&quot;</strong> and <strong>&quot;Default Team&quot;</strong>. A value stream description is optional.</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Name</td>
+<td>value stream name.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>value stream description</td>
+<td>no</td>
+</tr>
+<tr>
+<td>Team</td>
+<td>Team of users who can access this value stream.</td>
+<td>yes</td>
+</tr>
+</tbody>
+</table>
+<p><img src="valueStream/newValueStream/form-Azure.png" alt="Jenkins Global Config Page"></p>
+<h3 class="mume-header" id="351-create-a-vsmjson-file">3.5.1 Create a vsm.json file</h3>
+
+<p>UrbanCode Velocity value streams are fully configurable by downloading and uploading a value stream map (VSM) json file. Save the vsm.json content provided below as a .json file. We will then upload this file to configure our value stream.</p>
+<blockquote>
+<p><strong>Because this json content references integrations by name, the integrations must be created and named correctly before uploading it.</strong></p>
+</blockquote>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">&quot;_id&quot;</span><span class="token operator">:</span> <span class="token string">&quot;5e702311e1819863a523107a&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;pipelineId&quot;</span><span class="token operator">:</span> <span class="token string">&quot;83225f55-d456-4de1-af65-636eeb7916a9&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;tenantId&quot;</span><span class="token operator">:</span> <span class="token string">&quot;5ade13625558f2c6688d15ce&quot;</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;query&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;phases&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Planning&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;stages&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Backlog-Demonstration&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;query&quot;</span><span class="token operator">:</span> <span class="token string">&quot;issue.status=&apos;New&apos;&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;wipLimit&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;gates&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Development&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;stages&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;In Progress&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;query&quot;</span><span class="token operator">:</span> <span class="token string">&quot;(issue.status=\&quot;Active\&quot; and pr.status!=\&quot;active\&quot; and pr.status!=\&quot;completed\&quot;)&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;wipLimit&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;gates&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;In Review&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;query&quot;</span><span class="token operator">:</span> <span class="token string">&quot;pr.status=active and issue.status!=\&quot;Closed\&quot;&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;wipLimit&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;gates&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Build&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;stages&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Merged&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;query&quot;</span><span class="token operator">:</span> <span class="token string">&quot;pr.status = &apos;completed&apos; and deployment.env != &apos;DEV&apos; and deployment.env != &apos;QA&apos; and deployment.env != &apos;PROD&apos;&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;wipLimit&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;gates&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;Deploy&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;stages&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;DEV&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;query&quot;</span><span class="token operator">:</span> <span class="token string">&quot;deployment.env = &apos;DEV&apos; and deployment.env != &apos;QA&apos; and deployment.env != &apos;PROD&apos; and pr.status = &apos;completed&apos;&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;wipLimit&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;gates&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;QA&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;query&quot;</span><span class="token operator">:</span> <span class="token string">&quot;deployment.env = &apos;QA&apos; and deployment.env != &apos;PROD&apos; and pr.status = &apos;completed&apos;&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;wipLimit&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;gates&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+          <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;PROD&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;query&quot;</span><span class="token operator">:</span> <span class="token string">&quot;deployment.env = &apos;PROD&apos; and pr.status = &apos;completed&apos;&quot;</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;description&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;wipLimit&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+          <span class="token property">&quot;gates&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;leadTime&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;cycleTime&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;mappings&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;integrations&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;AzureWorkbook&quot;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;name&quot;</span><span class="token operator">:</span> <span class="token string">&quot;dummyIntegration&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;linkRules&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">&quot;fromIntegrationName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;AzureWorkbook&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;toIntegrationName&quot;</span><span class="token operator">:</span> <span class="token string">&quot;AzureWorkbook&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;fromField&quot;</span><span class="token operator">:</span> <span class="token string">&quot;pr.name&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;toField&quot;</span><span class="token operator">:</span> <span class="token string">&quot;issue.id&quot;</span><span class="token punctuation">,</span>
+      <span class="token property">&quot;pattern&quot;</span><span class="token operator">:</span> <span class="token string">&quot;([0-9]+)&quot;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;metrics&quot;</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>
+  <span class="token property">&quot;metricsBar&quot;</span><span class="token operator">:</span> <span class="token null">null</span>
+<span class="token punctuation">}</span>
+</pre><blockquote>
+<p><strong><em>Explanation of VSM JSON</em></strong></p>
+<ul>
+<li><strong>Integrations Array</strong><br>
+This vsm.json content defines an integration for Jira. Integrations are included based on integration name. This workbook uses the names <strong>&quot;AzureWorkbook&quot;</strong> and <strong>&quot;dummyIntegration&quot;</strong>. This part of the vsm.json needs changed if the integrations happen to be named differently.</li>
+</ul>
+<pre data-role="codeBlock" data-info="json" class="language-json"><span class="token property">&quot;integrations&quot;</span><span class="token operator">:</span><span class="token punctuation">[</span>
+   <span class="token punctuation">{</span>
+     <span class="token property">&quot;name&quot;</span><span class="token operator">:</span><span class="token string">&quot;AzureWorkbook&quot;</span>
+   <span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">{</span>
+     <span class="token property">&quot;name&quot;</span><span class="token operator">:</span><span class="token string">&quot;dummyIntegration&quot;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</pre><ul>
+<li><strong>Phases and Stages</strong><br>
+Value streams are organized as phases and stages. The json file provides phase and stage definitions. An important part of stages are stage queries which logically define whether a work item (dot) should be included in a stage or not.</li>
+</ul>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript"><span class="token string">&quot;phases&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+ <span class="token punctuation">{</span>
+   <span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Planning&quot;</span><span class="token punctuation">,</span>
+   <span class="token string">&quot;description&quot;</span><span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+   <span class="token string">&quot;stages&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+     <span class="token punctuation">{</span>
+       <span class="token string">&quot;name&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;Backlog-Demonstration&quot;</span><span class="token punctuation">,</span>
+       <span class="token string">&quot;query&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;issue.status=&apos;New&apos;&quot;</span><span class="token punctuation">,</span>
+       <span class="token string">&quot;description&quot;</span><span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+       <span class="token string">&quot;wipLimit&quot;</span><span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+       <span class="token string">&quot;gates&quot;</span><span class="token punctuation">:</span> <span class="token keyword">null</span>
+     <span class="token punctuation">}</span>
+   <span class="token punctuation">]</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</pre><p><img src="valueStream/phasesStages.png" alt="Value Stream Graphic"></p>
+<ul>
+<li><strong>Link Rules</strong><br>
+Link rules are important for this workbook. They define how pull requests (PRs) get linked to work items. In this case based on the regex pattern <code>([0-9]+)</code>.</li>
+</ul>
+<pre data-role="codeBlock" data-info="javascript" class="language-javascript"> <span class="token string">&quot;linkRules&quot;</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">{</span>
+     <span class="token string">&quot;fromIntegrationName&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;AzureWorkbook&quot;</span><span class="token punctuation">,</span>
+     <span class="token string">&quot;toIntegrationName&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;AzureWorkbook&quot;</span><span class="token punctuation">,</span>
+     <span class="token string">&quot;fromField&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;pr.name&quot;</span><span class="token punctuation">,</span>
+     <span class="token string">&quot;toField&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;issue.id&quot;</span><span class="token punctuation">,</span>
+     <span class="token string">&quot;pattern&quot;</span><span class="token punctuation">:</span> <span class="token string">&quot;([0-9]+)&quot;</span>
+   <span class="token punctuation">}</span>
+ <span class="token punctuation">]</span>
+</pre></blockquote>
+<h3 class="mume-header" id="352-upload-the-vsmjson-file">3.5.2 Upload the vsm.json File</h3>
+
+<p>If you have a brand-new value stream, then the upload button will be directly available.</p>
+<p><img src="jira/uploadVsm.png" alt></p>
+<p>After the first vsm.json file is uploaded, the value stream can be modified with additional uploads via the tools and utilities dropdown option &quot;Replace value stream map&quot;.</p>
+<img src="valueStream/vsmUploadDownload.png" alt="drawing" style="width:300px;">
+<p>After uploading the vsm.json file you should see the appropriate phases and stages in your value stream:</p>
+<p><img src="AzureValueStream/1-dot-nothing.png" alt></p>
+<h2 class="mume-header" id="36-configure-the-value-stream-pipeline">3.6 Configure the Value Stream Pipeline</h2>
+
+<h3 class="mume-header" id="361-add-ucd-to-the-pipeline">3.6.1 Add UCD to the Pipeline</h3>
+
+<p>On the Value Stream page, click <strong>&quot;Pipeline&quot;</strong> and click <strong>&quot;Add App&quot;</strong>, then  choose <strong>&quot;UrbanCode Deploy&quot;</strong> from the dropdown. You will also need to select the application and process for this workbook.</p>
+<p><img src="velocity/pipeline-add-ucd.png" alt></p>
+<h3 class="mume-header" id="362-map-environments">3.6.2 Map Environments</h3>
+
+<p>Click on the &quot;+&quot; icon under each environment to map a UCD environment to the Velocity pipeline environment.</p>
+<p><img src="velocity/pipeline-with-ucd.png" alt></p>
+<p><img src="velocity/pipeline-env-mapping.png" alt></p>
+<h1 class="mume-header" id="4-use-the-value-stream-from-planning-to-merged">4. Use the Value Stream from Planning to Merged</h1>
+
+<p>Shew, that was a lot of setup. Now let&apos;s get that dot moving!</p>
+<blockquote>
+<p><strong>Pro Tip</strong>: We&apos;re about to do a lot of external activity to Velocity. To speed things up, you can force Velocity integrations to sync by clicking disable/enable every time we change an external state (like create a work item or merge a PR)</p>
+<p><img src="AzureValueStream/integration-sync.png" alt></p>
+</blockquote>
+<h2 class="mume-header" id="41-backlog">4.1 Backlog</h2>
+
+<p>As observed above, our value stream has a bunch of stages but no dots, that&apos;s perfectly accurate for our empty board in Azure. Click on &quot;New Item&quot; to create a new work item.</p>
+<p><img src="AzureValueStream/2-new-work-item-1.png" alt></p>
+<p>You can title this work item anything you like, the example below names it &quot;do the workbook&quot; and assigns it a work item ID of &quot;5&quot;. <strong>Take note of this work item ID. It will probably be a different number for you and you will need it later.</strong></p>
+<p><img src="AzureValueStream/2-new-work-item-2.png" alt></p>
+<p>Once Velocity syncs up with Azure (disable/enable integration if you don&apos;t want to wait) you will see the dot show up in your backlog. Neat!</p>
+<p><img src="AzureValueStream/2-dot-backlog.png" alt></p>
+<p>but why is it red, it seems a little upset &#x1F621;?... Aww, because it has an alert: &quot;Issue not assigned&quot;.</p>
+<p><img src="AzureValueStream/2b1.png" alt></p>
+<p>Go ahead and assign it to someone back in Azure. There&apos;s nothing like a little delegating to get the ball rolling (even if it is to yourself).</p>
+<p><img src="AzureValueStream/2b2.png" alt></p>
+<p>Now our dot is a happy little dot &#x1F607; (and we see the beginnings of its history)</p>
+<p><img src="AzureValueStream/2b3.png" alt></p>
+<h2 class="mume-header" id="42-in-progress">4.2 In Progress</h2>
+
+<p>Turns out, we are in fact doing the workbook &#x1F603; so grab that &quot;do the workbook&quot; card from the backlog and move it to &quot;active&quot;.</p>
+<p><img src="AzureValueStream/3-card-active.png" alt></p>
+<p>Wait for Velocity to sync (or force with disable/enable). The dot will move to &quot;In Progress&quot;.</p>
+<p><img src="AzureValueStream/3-dot-in-progress.png" alt></p>
+<h2 class="mume-header" id="43-in-review">4.3 In Review</h2>
+
+<p>Now that the card is active, we have to do some actual work to move the dot to review. That&apos;s a good thing; Velocity is a lot more than just moving cards around!</p>
+<h3 class="mume-header" id="431-create-a-new-branch">4.3.1 Create a new Branch</h3>
+
+<p>Navigate to branches in Azure and click &quot;New branch&quot;.<br>
+The branch name does not matter; you can just name it &quot;workbook&quot; and Click create.</p>
+<p><img src="AzureValueStream/4-new-branch-1.png" alt></p>
+<h3 class="mume-header" id="432-make-changes-to-the-branch">4.3.2 Make Changes to the Branch</h3>
+
+<p><img src="AzureValueStream/4-new-branch-2.png" alt></p>
+<p>Once the branch is created we can directly edit the <code>README.md</code> file from Azure. You can make any changes you want, like change the &quot;Introduction&quot; section to say &quot;workbook&quot;.</p>
+<p><img src="AzureValueStream/4-edit-branch.png" alt></p>
+<h2 class="mume-header" id="433-commit-changes">4.3.3 Commit Changes</h2>
+
+<p>Once you&apos;ve made changes click &quot;Commit&quot;.</p>
+<p><img src="AzureValueStream/4-make-commit.png" alt></p>
+<h3 class="mume-header" id="434-create-pull-request">4.3.4 Create Pull Request</h3>
+
+<p>After committing changes our branch is now different than master. That&apos;s great, we&apos;ve added value! Click &quot;Create a Pull Request&quot;.</p>
+<p><img src="AzureValueStream/4-create-pr-1.png" alt></p>
+<p>For the most part, the default values are fine for the Pull Request (PR), except one critical piece: <strong>we need the work item ID to be in the PR title</strong>. This is because we configured our value stream back in Velocity to link work items to PRs based on the work item ID in the PR title. The example here shows &quot;5&quot; but your ID is probably different. Once correctly titled, click &quot;Create&quot; to create the PR.</p>
+<p><img src="AzureValueStream/4-create-pr-2.png" alt></p>
+<h3 class="mume-header" id="435-observe-dot">4.3.5 Observe Dot</h3>
+
+<p>Wait for Velocity to sync (or disable/enable integration). The dot will move from &quot;In Progress&quot; to &quot;In Review&quot;.</p>
+<p><img src="AzureValueStream/4-dot-in-review.png" alt></p>
+<h2 class="mume-header" id="44-merged">4.4 Merged</h2>
+
+<p>You have reviewed your changes and lo, they are beyond perfect, even sublime. Your PR is approved, go ahead and merge (click &quot;Complete&quot;).</p>
+<p><img src="AzureValueStream/5-merge-1.png" alt></p>
+<p>The default values for &quot;Complete pull request&quot; are fine, click &quot;Complete merge&quot;.</p>
+<p><img src="AzureValueStream/5-merge-2.png" alt></p>
+<p>Wait for Velocity to sync. The dot will move to &quot;Merged&quot;.</p>
+<p><img src="AzureValueStream/5-dot-merged.png" alt></p>
+<h1 class="mume-header" id="5-use-the-value-stream-with-deployments">5. Use the Value Stream with Deployments</h1>
+
+<h2 class="mume-header" id="51-create-a-ucd-snapshot">5.1 Create a UCD snapshot</h2>
+
+<p>In UCD, for the workbook application, click on the play icon on the left of the DEV environment to request a process.</p>
+<p><img src="ucd/env-request-process-circle.png" alt></p>
+<p>We will run our &quot;deploy&quot; process that installs our component. We need to choose a component version though; click &quot;Choose Versions&quot;.</p>
+<p><img src="ucd/env-request-process.png" alt></p>
+<p>We should be fine with choosing &quot;Latest Available&quot; for our version. This should give us the version we synced over to UCD from our Azure git tag created by our Azure pipeline.</p>
+<p><img src="ucd/env-request-process-version.png" alt></p>
+<p>The process should run and deploy the component. Click the camera icon for DEV to take a snapshot of the deployment. <strong>Name the snapshot the same as the version.</strong></p>
+<p><img src="ucd/azureWorkbook/dev-deployed-version.png" alt></p>
+<h2 class="mume-header" id="52-deploy-to-dev">5.2 Deploy to Dev</h2>
+
+<p>From UCD, click the play icon again except this time let&apos;s use our snapshot for the deployment. Then go back to Velocity and give it time to sync. The dot will move to the deployment stage for DEV.</p>
+<p><img src="ucd/env-request-process-circle.png" alt></p>
+<p><img src="AzureValueStream/dot-dev.png" alt></p>
+<h2 class="mume-header" id="53-deploy-to-qa">5.3 Deploy to QA</h2>
+
+<p>From Velocity, go to our pipeline. Click the play icon for QA. Give it time to run and sync, then navigate back to the value stream and observe the dot in QA.</p>
+<p><img src="AzureValueStream/deploy-qa.png" alt></p>
+<p><img src="AzureValueStream/dot-qa.png" alt></p>
+<h2 class="mume-header" id="54-deploy-to-prod">5.4 Deploy to Prod</h2>
+
+<p>Finally, you can choose either between UCD or the Velocity pipeline to deploy the snapshot to PROD. Wait for Velocity to sync and the dot will move to PROD. We have completed the value stream at this point from planning to production. &#x1F44F;</p>
+<p><img src="AzureValueStream/dot-prod.png" alt></p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
