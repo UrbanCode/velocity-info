@@ -19,6 +19,7 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
 
 <!-- code_chunk_output -->
 - [Creating an Azure and UrbanCode Deploy (UCD) Value Stream](#creating-an-azure-and-urbancode-deploy-ucd-value-stream)
+- [Creating an Azure and UrbanCode Deploy (UCD) Value Stream](#creating-an-azure-and-urbancode-deploy-ucd-value-stream)
   - [Objective](#objective)
   - [Workbook Guidelines](#workbook-guidelines)
 - [1. Setup Azure](#1-setup-azure)
@@ -31,14 +32,14 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
     - [2.1.1 Configure Component and get Version from Azure](#211-configure-component-and-get-version-from-azure)
     - [2.1.2 Create Component Process](#212-create-component-process)
   - [2.2 Create Workbook Application](#22-create-workbook-application)
-    - [2.2.1 Create Environments](#221-create-environments)
-    - [2.2.2 Create Application Process](#222-create-application-process)
-  - [2.3 Create UCD Access Token](#23-create-ucd-access-token)
+    - [2.2.1 Create Application Process](#221-create-application-process)
+    - [2.2.2 Create Environments](#222-create-environments)
+    - [2.3 Create UCD Access Token](#23-create-ucd-access-token)
 - [3. Setup Velocity](#3-setup-velocity)
   - [3.1 Create a Velocity User Access Key](#31-create-a-velocity-user-access-key)
   - [3.2 Setup UCD within Velocity](#32-setup-ucd-within-velocity)
     - [3.2.1 Create UCD Integration](#321-create-ucd-integration)
-    - [3.2.2 Upgrade UCD Integration](#322-upgrade-ucd-integration)
+    - [3.2.2 Allow Time for UCD to Sync](#322-allow-time-for-ucd-to-sync)
     - [3.2.3 Add user to UCD Team](#323-add-user-to-ucd-team)
   - [3.3 Setup Azure within Velocity](#33-setup-azure-within-velocity)
     - [3.3.1 Create Azure Integration](#331-create-azure-integration)
@@ -60,7 +61,7 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
     - [4.3.4 Create Pull Request](#434-create-pull-request)
     - [4.3.5 Observe Dot](#435-observe-dot)
   - [4.4 Merged](#44-merged)
-- [5. Use the Value Stream for Deployments](#5-use-the-value-stream-for-deployments)
+- [5. Use the Value Stream with Deployments](#5-use-the-value-stream-with-deployments)
   - [5.1 Create a UCD snapshot](#51-create-a-ucd-snapshot)
   - [5.2 Deploy to Dev](#52-deploy-to-dev)
   - [5.3 Deploy to QA](#53-deploy-to-qa)
@@ -74,12 +75,14 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
 Requirements: 
   1. Azure account with ability to create a new project.
 
+For this workbook We will need an Azure project with work items, an Azure git repository, and a build pipeline that creates repository tags whens it runs. We will also need an Azure access token.
+
 ## 1.1 Create Workbook Project 
 
 Navigate to `https://dev.azure.com/<your org name>` to create a new project. To learn more about creating Azure projects visit  [https://docs.microsoft.com/en-us/azure/devops/organizations/projects/create-project](https://docs.microsoft.com/en-us/azure/devops/organizations/projects/create-project)
 
 Configure your new project as follows:
-  - *Project Name:* AzureWorkbook
+  - *Project Name:* AzureWorkbook **(must match UCD application name)**
   - *Visibility:* Private
   - *Version Control:* Git
   - *Work item process:* Agile
@@ -98,7 +101,7 @@ In your new project, navigate to "Repos" to create a new repository. It can be t
 
 We also want an Azure pipeline in this workbook to represent our build step. We need to set that up with a little secret sauce: we want successful runs to tag our repo. You can learn more about Azure pipelines at [https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline).
 
-1. Navigate to Pipelines and click "Create Pipeline". For the type of repository select "Azure Repos Git" and select the workbook repository we just created "AzureWorkbook".
+1. Navigate to Pipelines and click "Create Pipeline", select "Azure Repos Git", and select "AzureWorkbook" as the repository we just created.
 ![](azure/new-pipeline-2.png)
 ![](azure/new-pipeline-3.png)
 
@@ -159,7 +162,7 @@ Confirm that the component version was imported from the Azure tag we created wh
 
 ![](ucd/azureWorkbook/component-versions.png)
 
-## 2.1.2 Create Component Process
+### 2.1.2 Create Component Process
 
 We just need a bare minimum deploy process for this workbook. Make sure it is "Process Type" Deployment. The process itself will just be a one second wait (The wait step is available under utilities).
 
@@ -169,23 +172,26 @@ We just need a bare minimum deploy process for this workbook. Make sure it is "P
 
 ## 2.2 Create Workbook Application
 
-Create an application and name it "AzureWorkbook".
+Create an application and name it "AzureWorkbook". **It is important that the UCD application name matches the Azure project name.** Make sure to add the workbook component to the application.
 
-## 2.2.1 Create Environments
+![](ucd/azureWorkbook/app-add-component.png)
 
-Create three environments. You can use the same base resource for each environment. It should contain an agent with the workbook component we just created.
-
-![](ucd/azureWorkbook/application-env-1.png)
-
-## 2.2.2 Create Application Process
+### 2.2.1 Create Application Process
 
 Create a bare minimum install process for the application to install our component.
 
 ![](ucd/azureWorkbook/application-process-1.png)
 ![](ucd/azureWorkbook/application-process-2.png)
 
+### 2.2.2 Create Environments
 
-## 2.3 Create UCD Access Token
+Create three environments. You can use the same base resource for each environment. Each should contain an agent with the workbook component we just created.
+
+![](ucd/azureWorkbook/create-env.png)
+
+![](ucd/azureWorkbook/application-env-1.png)
+
+### 2.3 Create UCD Access Token
 
 Navigate to `<UCD URL>/#security/tokens` ("Settings" --> "Tokens") and click "Create Token". Make sure to copy and save token to use later.
 
@@ -217,11 +223,11 @@ Navigate to `<Velocity URL>/settings/integrations`. Click "Plugins" and click "A
 
 ![](velocity/add-integration-ucd.png)
 
-### 3.2.2 Upgrade UCD Integration
+### 3.2.2 Allow Time for UCD to Sync
 
-After creating the integration, click on the vertical ellipses on the right of the integration's row and click "upgrade" if available.
+Before proceeding, it is important to **allow time for the UCD integration to sync**.
 
-![](velocity/integration-vertical-ellipses.png)
+![](velocity/integration-ucd-sync.png)
 
 ### 3.2.3 Add user to UCD Team
 
@@ -265,7 +271,7 @@ Depending on your version of Velocity you might see an extra field for "Logger L
 
 ### 3.3.2 Upgrade Azure Integration
 
-After creating the integration, click on the vertical ellipses on the right of the integration's row and click "upgrade" if available.
+**It is important to use the latest version of the Azure plugin for this workbook.** After creating the integration, click on the vertical ellipses on the right of the integration's row and click "upgrade" (if "upgrade" is not shown in the dropdown then the plugin is already updated to latest).
 
 ![](velocity/integration-vertical-ellipses.png)
 
