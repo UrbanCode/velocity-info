@@ -18,7 +18,6 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=8 orderedList=false} -->
 
 <!-- code_chunk_output -->
-- [Creating an Azure and UrbanCode Deploy (UCD) Value Stream](#creating-an-azure-and-urbancode-deploy-ucd-value-stream)
   - [Objective](#objective)
   - [Workbook Guidelines](#workbook-guidelines)
 - [1. Setup Azure](#1-setup-azure)
@@ -28,12 +27,12 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
   - [1.4 Create an Azure Access Token](#14-create-an-azure-access-token)
 - [2. Setup UCD](#2-setup-ucd)
   - [2.1 Create Workbook Component](#21-create-workbook-component)
-    - [2.1.1 Configure Component and get Version from Azure](#211-configure-component-and-get-version-from-azure)
+    - [2.1.1 Configure Component to get Version from Azure](#211-configure-component-to-get-version-from-azure)
     - [2.1.2 Create Component Process](#212-create-component-process)
-  - [2.2 Create Workbook Application](#22-create-workbook-application)
+  - [2.2 Create Workbook Application with Component](#22-create-workbook-application-with-component)
     - [2.2.1 Create Application Process](#221-create-application-process)
     - [2.2.2 Create Environments](#222-create-environments)
-    - [2.3 Create UCD Access Token](#23-create-ucd-access-token)
+  - [2.3 Create UCD Access Token](#23-create-ucd-access-token)
 - [3. Setup Velocity](#3-setup-velocity)
   - [3.1 Create a Velocity User Access Key](#31-create-a-velocity-user-access-key)
   - [3.2 Setup UCD within Velocity](#32-setup-ucd-within-velocity)
@@ -198,7 +197,7 @@ Create three environments named **"DEV", "QA", and "PROD"**. You can use the sam
 
 ![](ucd/azureWorkbook/application-env-1.png)
 
-### 2.3 Create UCD Access Token
+## 2.3 Create UCD Access Token
 
 Navigate to `<UCD URL>/#security/tokens` ("Settings" --> "Tokens") and click **"Create Token"**. Make sure to copy and save token to use later.
 
@@ -574,7 +573,7 @@ Once the branch is created we can directly edit the `README.md` file from Azure.
 
 ![](AzureValueStream/4-edit-branch.png)
 
-## 4.3.3 Commit Changes
+### 4.3.3 Commit Changes
 
 Once you've made changes click "Commit".
 
