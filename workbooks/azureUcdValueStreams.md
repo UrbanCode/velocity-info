@@ -19,6 +19,8 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
 
 <!-- code_chunk_output -->
   - [Objective](#objective)
+- [Creating an Azure and UrbanCode Deploy (UCD) Value Stream](#creating-an-azure-and-urbancode-deploy-ucd-value-stream)
+  - [Objective](#objective)
   - [Workbook Guidelines](#workbook-guidelines)
 - [1. Setup Azure](#1-setup-azure)
   - [1.1 Create Workbook Project](#11-create-workbook-project)
@@ -70,12 +72,15 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
 
 # 1. Setup Azure
 
-Requirements: 
-  1. Azure account with ability to create a new project.
+For this workbook, you will need an Azure project with the following:
 
-For this workbook, you will need an Azure project with work items, an Azure git repository, and a build pipeline that creates repository tags whens it runs. **The Azure project name must match you UCD application name.** You will also need an Azure access token. The following steps demonstrate the minimum setup.
+- **An Azure project name that must match your UCD application name.**
+- Work items (Agile board with first two columns being "New" and "Active")
+- An Azure repos git repository
+- A build pipeline that creates repository tags whens it runs. 
+- An Azure access token with read access to all of the above (work items, git repo, and builds)
 
-(🔀 Alternative: See how far you can get with an existing project and/or repository)
+> The rest of section 1 covers the bare minimum setup. If you already have the above setup or feel comfortable setting it up feel free to skip to section 2 and start configuring UCD, but note that the workbook assumes an Azure project name of "AzureWorkbook". If your project name is different, you will need to name your UCD application accordingly.
 
 ## 1.1 Create Workbook Project 
 
@@ -128,13 +133,26 @@ We also want an Azure pipeline in this workbook to represent our build step. We 
 
 Navigate to `https://dev.azure.com/<your org name>/_usersSettings/tokens`. Learn more about Azure Access tokens at [https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
 
-Create a new token. Give it a reasonable name an expiration date for your usage. The easiest option is to select "Full Access". Make sure to copy and save your key (you'll need it later in Velocity).
+Create a new token. Give it a reasonable name and expiration date. The minimal scope is read access to "Work Items", "Code", and "Build". Make sure to copy and save your key (you'll need it later in Velocity).
 
 ![](azure/access-token-2.png)
 
 # 2. Setup UCD
 
-UCD should already be setup with an agent. We will setup a component and application for this workbook.
+UCD requirements are as follows:
+
+  - At least one agent
+  - At least one component with the following:
+    - Component configured to get versions from the Azure repository (git source, watch for tags, import versions automatically)
+    - Component must have a deploy process
+  - An application with the following:
+    - Named the same as the Azure project (this workbook uses the name "AzureWorkbook")
+    - Application must have an install process for component above
+    - The application should have three environments that we can deploy to. These will map to DEV, QA, and PROD.
+  - A UCD user access token
+
+
+If you already have the above setup or feel comfortable setting it up on your own please feel free to skip to section 3 to start setting up Velocity. The rest of section 2 presents the bare minimum setup in UCD assuming we already have an agent.
 
 ## 2.1 Create Workbook Component
 
@@ -512,9 +530,17 @@ Click on the "+" icon under each environment to map a UCD environment to the Vel
 
 Shew, that was a lot of setup. Now let's get that dot moving!
 
+> **Explore**: Each step shows a value stream screenshot of the dot in a stage, but don't let your exploration stop there! As you go through this workbook take a look around. The "Swim Lanes" view is automatically configured as part of the value stream. It provides an assigned user view all the way from backlog to PROD. Poke around more and you'll find that Insights is already at work gathering data like build and deployment counts as we proceed.
+> ![](AzureValueStream/swimlanes-prod.png)
+> ![](AzureValueStream/insights.png)
+
+
+---
+
 > **Pro Tip**: We're about to do a lot of external activity to Velocity. To speed things up, you can force Velocity integrations to sync by clicking disable/enable every time we change an external state (like create a work item or merge a PR)
 >
 > ![](AzureValueStream/integration-sync.png)
+
 
 
 ## 4.1 Backlog
@@ -650,4 +676,3 @@ From Velocity, go to our pipeline. Click the play icon for QA. Give it time to r
 Finally, you can choose either between UCD or the Velocity pipeline to deploy the snapshot to PROD. Wait for Velocity to sync and the dot will move to PROD. We have completed the value stream at this point from planning to production. 👏
 
 ![](AzureValueStream/dot-prod.png)
-
