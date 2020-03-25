@@ -3,7 +3,7 @@
 ## Objective
 Create a value stream with Azure and UrbanCode Deploy integrations and exercise it from beginning (a new issue) to end (deployment to Prod).
 
-![](\azure-ucd-overview.png)
+![](/azure-ucd-overview.png)
 
 ## Workbook Guidelines
 
