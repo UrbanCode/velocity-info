@@ -3,6 +3,8 @@
 ## Objective
 Create a value stream with Azure and UrbanCode Deploy integrations and exercise it from beginning (a new issue) to end (deployment to Prod).
 
+![](\azure-ucd-overview.png)
+
 ## Workbook Guidelines
 
 **< > Placeholders/Substitution**
@@ -104,29 +106,15 @@ In your new project, navigate to "Repos" to create a new repository. It can be t
 
 We also want an Azure pipeline in this workbook to represent our build step. We need to set that up with a little secret sauce: we want successful runs to tag our repo. You can learn more about Azure pipelines at [https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline).
 
-1. Navigate to Pipelines and click "Create Pipeline", select "Azure Repos Git", and select "AzureWorkbook" as the repository we just created.
-
-![](azure/new-pipeline-2.png)
-![](azure/new-pipeline-3.png)
-
-2. The default "hello world" .yml is good enough for this workbook's pipeline. Click save (avoid running for now).
-
+1. Create a new pipeline. You can use the "Starter Pipeline" or default "Hello World" .yml for this workbook. Click save (avoid running for now).
 ![](azure/new-pipeline-4.png)
-
 3. After the pipeline is created we need to setup repository tagging. Click "edit" from the pipeline view.
-
 ![](azure/new-pipeline-5.png)
-
 4. After clicking edit you should see the yml. Click on the vertical ellipsis in the upper right beside "Run" and click "Triggers" from the dropdown.
-
 ![](azure/new-pipeline-6.png)
-
-5. There's a lot to unpack here, but we're going to be laser focussed on one thing right now. Click **"YAML"** on the left of the upper horizontal tabs. Click **"Get Sources"** under YAML. Scroll down in the menu that shows on the right. Under **"Tag sources"** click **"On Success"**. Go ahead and click **"Save & queue"**. Our pipeline should now create repository tags for successful builds, and since we queued it, we should have a build pending.
-
+5. There's a lot to unpack here, but we're going to be laser focussed on one thing right now. Click **"YAML"** on the left of the upper horizontal tabs. Click **"Get Sources"** under YAML. Scroll down in the menu that shows to the right. Under **"Tag sources"** click **"On Success"**. Go ahead and click **"Save & queue"**. Our pipeline should now create repository tags for successful builds, and since we queued it, we should have a build pending.
 ![](azure/new-pipeline-7.png)
-
-6. Confirm that the pipeline ran successfully and created a tag for the repository.
-
+6. Confirm that the pipeline successfully ran and created a tag for the repository.
 ![](azure/repo-tags-1.png)
 
 ## 1.4 Create an Azure Access Token
