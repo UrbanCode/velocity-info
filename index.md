@@ -1,44 +1,40 @@
 
-*Practical information for using UrbanCode Velocity*
 
-# Product Documentation
 
-*This content is supplemental. Please also refer to version specific product documentation.*
+---
+NOTE: This content is geared towards community engagement. Please refer to version specific product documentation for production details.
 
+#### [>> Plugin Documentation](https://www.urbancode.com/plugins/?search=&product_filter%5B%5D=811)
 #### [>> HCL Documentation](https://urbancode.hcldoc.com/)
 #### [>> IBM Documentation](https://www.ibm.com/support/knowledgecenter/SSCKX6)
 
+#### \>> Look for the help icon in the upper right of Velocity's header to find links to Documentation, Getting started, and About information.
 ![Documentation can be accessed in the upper right of Velocity](workbooks/general/docs.png)
 
-#### Also checkout the Velocity Website! 😀 [http://www.urbancode.com/](http://www.urbancode.com/)
-
-
-# [FAQ (Frequently Asked Questions)](FAQ.md)
-
-<br />
+---
 
 # Workbooks
 
-## 1. [Introduction to Value Streams](workbooks/introductionToValueStreams.md)   
-![](workbooks/general/vsmGraphic.png)
+### 1. [Building a Value Stream with Jira, GitHub, and Jenkins](workbooks/introductionToValueStreams.md) 
+![](workbooks/valueStream/valueStreamOverview.png)
+### 2. [Building a Value Stream with Azure and UCD](workbooks/introductionToValueStreams.md) 
+![](workbooks/azure-ucd-overview.png)
 
-<br />
+# General Content
+- ### [API Usage](apiDocs/release-events-api_API_docs.md)
 
-# Feature Overviews
+---
 
-<br />
+## How to Contribute
 
-# Advanced Concepts
+Your contributions are welcome and appreciated! :)
 
-- ## [API Usage](apiDocs/release-events-api_API_docs.md)
-- ## Example Value Stream Map (VSM) json
+**Create an Issue**
+The easiest way to contribute is by asking and/or answering a velocity-info issue (5 points and a gold star ⭐ if you ask and answer your own question).
 
-<br />
+These are not product issues, but a way to contribute to user content, so topics are very open. For instance, you might request new content like a workbook, suggest supplementary info, or describe a hurdle and/or solution.
 
-# How to Contribute
+Issues are highly searchable, so make sure to search for a related issue before posting a new one. Because of this, you can use velocity-info issues as a sort of Q&A on its own.
 
-1. Go to the velocity-info Issues page: https://github.com/UrbanCode/velocity-info/issues
-2. Create a new Issue describing your use case, technique, or problem.
+Just click on the "Issues" tab or the link below to get started: https://github.com/UrbanCode/velocity-info/issues.
 ![](workbooks/general/contribute_issue.png)
-3. Or, if you have a solution, propose changes with a Pull Request: https://github.com/UrbanCode/velocity-info/pulls
-![](workbooks/general/contribute_pr_2.png)

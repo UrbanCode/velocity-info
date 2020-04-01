@@ -106,15 +106,15 @@ In your new project, navigate to "Repos" to create a new repository. It can be t
 
 We also want an Azure pipeline in this workbook to represent our build step. We need to set that up with a little secret sauce: we want successful runs to tag our repo. You can learn more about Azure pipelines at [https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline).
 
-1. Create a new pipeline. You can use the "Starter Pipeline" or default "Hello World" .yml for this workbook. Click save (avoid running for now).
+1. Create a new pipeline. You can use the "Starter Pipeline" or default "Hello World" .yml for this workbook. Click save (avoid running for now). 
 ![](azure/new-pipeline-4.png)
-3. After the pipeline is created we need to setup repository tagging. Click "edit" from the pipeline view.
+3. After the pipeline is created we need to setup repository tagging. Click "edit" from the pipeline view. 
 ![](azure/new-pipeline-5.png)
-4. After clicking edit you should see the yml. Click on the vertical ellipsis in the upper right beside "Run" and click "Triggers" from the dropdown.
+4. After clicking edit you should see the yml. Click on the vertical ellipsis in the upper right beside "Run" and click "Triggers" from the dropdown. 
 ![](azure/new-pipeline-6.png)
-5. There's a lot to unpack here, but we're going to be laser focussed on one thing right now. Click **"YAML"** on the left of the upper horizontal tabs. Click **"Get Sources"** under YAML. Scroll down in the menu that shows to the right. Under **"Tag sources"** click **"On Success"**. Go ahead and click **"Save & queue"**. Our pipeline should now create repository tags for successful builds, and since we queued it, we should have a build pending.
+5. There's a lot to unpack here, but we're going to be laser focussed on one thing right now. Click **"YAML"** on the left of the upper horizontal tabs. Click **"Get Sources"** under YAML. Scroll down in the menu that shows to the right. Under **"Tag sources"** click **"On Success"**. Go ahead and click **"Save & queue"**. Our pipeline should now create repository tags for successful builds, and since we queued it, we should have a build pending. 
 ![](azure/new-pipeline-7.png)
-6. Confirm that the pipeline successfully ran and created a tag for the repository.
+6. Confirm that the pipeline successfully ran and created a tag for the repository. 
 ![](azure/repo-tags-1.png)
 
 ## 1.4 Create an Azure Access Token
@@ -140,7 +140,7 @@ UCD requirements are as follows:
   - A UCD user access token
 
 
-If you already have the above setup or feel comfortable setting it up on your own please feel free to skip to section 3 to start setting up Velocity. The rest of section 2 presents the bare minimum setup in UCD assuming we already have an agent.
+> If you already have the above setup or feel comfortable setting it up on your own please feel free to skip to section 3 to start setting up Velocity. The rest of section 2 presents the bare minimum setup in UCD assuming we already have an agent.
 
 ## 2.1 Create Workbook Component
 
@@ -168,10 +168,15 @@ Create an AzureWorkbook component within UCD. It is important that this componen
 
 ![](ucd/azureWorkbook/component-config-3.png)
 
+> Note: The default tag import option is "Use the system's default version import agent/tag".
+![](ucd/import-default-agent.png)
+> This option requires UCD Component settings to have "Agent for Version Import" configured (Settings --> System Settings --> Component Settings --> Agent for Version Imports). ![](ucd/component-settings.png)
+
 Confirm that the component version was imported from the Azure tag we created when we ran the Azure pipeline earlier.
 
 ![](ucd/azureWorkbook/component-versions.png)
 
+> If your import hangs without an error, confirm that your "External Agent URL" is accessible to the default import agent (Settings --> System Settings --> General Settings --> External Agent URL). See here for more details: https://github.com/UrbanCode/velocity-info/issues/17
 ### 2.1.2 Create Component Process
 
 We just need a bare minimum deploy process for this workbook. Make sure it is "Process Type" Deployment. The process itself will just be a one second wait (The wait step is available under utilities).
