@@ -10,10 +10,9 @@ NOTE: This content is geared towards community engagement. Please refer to versi
 
 # Workbooks
 
-### 1. [Building a Value Stream with Jira, GitHub, and Jenkins](workbooks/introductionToValueStreams.md) 
-![](workbooks/valueStream/valueStreamOverview.png)
-### 2. [Building a Value Stream with Azure and UCD](workbooks/introductionToValueStreams.md) 
-![](workbooks/azure-ucd-overview.png)
+### 1. [Building a Value Stream with Jira, GitHub, and Jenkins ![](workbooks/valueStream/valueStreamOverview.png)](workbooks/introductionToValueStreams.md) 
+
+### 2. [Building a Value Stream with Azure and UCD ![](workbooks/azure-ucd-overview.png)](workbooks/introductionToValueStreams.md) 
 
 # General Content
 - ### [API Usage](apiDocs/release-events-api_API_docs.md)
