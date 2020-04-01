@@ -10,9 +10,10 @@ NOTE: This content is geared towards community engagement. Please refer to versi
 
 # Workbooks
 
-### 1. [Building a Value Stream with Jira, GitHub, and Jenkins ![](workbooks/valueStream/valueStreamOverview.png)](workbooks/introductionToValueStreams.md) 
-
-### 2. [Building a Value Stream with Azure and UCD ![](workbooks/azure-ucd-overview.png)](workbooks/introductionToValueStreams.md) 
+### 1. [Building a Value Stream with Jira, GitHub, and Jenkins](workbooks/introductionToValueStreams.md) 
+![](workbooks/valueStream/valueStreamOverview.png)
+### 2. [Building a Value Stream with Azure and UCD](workbooks/introductionToValueStreams.md) 
+![](workbooks/azure-ucd-overview.png)
 
 # General Content
 - ### [API Usage](apiDocs/release-events-api_API_docs.md)
@@ -23,12 +24,12 @@ NOTE: This content is geared towards community engagement. Please refer to versi
 
 Your contributions are welcome and appreciated! 🙂
 
-**Create an Issue**
+**Create an Issue**   
 The easiest way to contribute is by asking and/or answering a velocity-info issue (5 points and a gold star ⭐ if you ask and answer your own question).
 
 These are not product issues, but a way to contribute to user content, so topics are very open. For instance, you might request new content like a workbook, suggest supplementary info, or describe a hurdle and/or solution.
 
-Issues are highly searchable, so make sure to search for a related issue before posting a new one. Also, because of this, you can use velocity-info issues as a sort of Q&A on its own.
+Issues are highly searchable, so make sure to search for a related issue before posting a new one. Also, because of this, you can use velocity-info issues as a sort of Q&A.
 
 Just click on the "Issues" tab from the repository or the link here to get started: <https://github.com/UrbanCode/velocity-info/issues>
 
