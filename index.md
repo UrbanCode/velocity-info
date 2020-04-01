@@ -22,7 +22,7 @@ NOTE: This content is geared towards community engagement. Please refer to versi
 
 ## How to Contribute
 
-Your contributions are welcome and appreciated! :)
+Your contributions are welcome and appreciated! 🙂
 
 **Create an Issue**
 The easiest way to contribute is by asking and/or answering a velocity-info issue (5 points and a gold star ⭐ if you ask and answer your own question).
@@ -31,6 +31,6 @@ These are not product issues, but a way to contribute to user content, so topics
 
 Issues are highly searchable, so make sure to search for a related issue before posting a new one. Also, because of this, you can use velocity-info issues as a sort of Q&A on its own.
 
-Just click on the "Issues" tab from the repository or the link here to get started: https://github.com/UrbanCode/velocity-info/issues
+Just click on the "Issues" tab from the repository or the link here to get started: <https://github.com/UrbanCode/velocity-info/issues>
 
-![](workbooks/general/contribute_issue.png)
+![](workbooks/general/contribute_issue.PNG)
