@@ -12,7 +12,7 @@ NOTE: This content is geared towards community engagement. Please refer to versi
 
 ### 1. [Building a Value Stream with Jira, GitHub, and Jenkins](workbooks/introductionToValueStreams.md) 
 ![](workbooks/valueStream/valueStreamOverview.png)
-### 2. [Building a Value Stream with Azure and UCD](workbooks/introductionToValueStreams.md) 
+### 2. [Building a Value Stream with Azure and UCD](workbooks/azureUcdValueStreams.md) 
 ![](workbooks/azure-ucd-overview.png)
 
 # General Content
