@@ -17,7 +17,7 @@ NOTE: This content is geared towards community engagement. Please refer to versi
 
 # General Content
 - ### [API Usage](apiDocs/release-events-api_API_docs.md)
-
+- ### [How to Migrate Docker-Compose to Kubernetes](docker-compose_to_kubernetes.md)
 ---
 
 ## How to Contribute
