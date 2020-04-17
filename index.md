@@ -1,8 +1,5 @@
 NOTE: This content is geared towards community engagement. Please refer to version specific product documentation for details.
 
-#### [>> Plugin Documentation](https://www.urbancode.com/plugins/?search=&product_filter%5B%5D=811)
-#### [>> HCL Documentation](https://urbancode.hcldoc.com/)
-#### [>> IBM Documentation](https://www.ibm.com/support/knowledgecenter/SSCKX6)
 #### \>> Also, look for the help icon in the upper right of Velocity's header to find links to Documentation, Getting started, and About information.
 ![Documentation can be accessed in the upper right of Velocity](workbooks/general/docs.png)
 
