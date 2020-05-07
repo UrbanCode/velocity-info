@@ -2,17 +2,18 @@
 
 A common realm for practical usage of UrbanCode Velocity.
 
-# Product Documentation
+## [https://urbancode.github.io/velocity-info](https://urbancode.github.io/velocity-info)
+
+# Also see Product Documentation
 
 *This content is supplemental. Please also refer to version specific product documentation.*
 
 #### [>> HCL Documentation](https://urbancode.hcldoc.com/)
 #### [>> IBM Documentation](https://www.ibm.com/support/knowledgecenter/SSCKX6)
-#### Also checkout the Velocity Website! :) [http://www.urbancode.com/](http://www.urbancode.com/)
+#### Checkout the Velocity Website! :) [http://www.urbancode.com/](https://www.urbancode.com/resources/?search=&product_filter%5B%5D=811)
 
 ![Documentation can be accessed in the upper right of Velocity](workbooks/general/docs.png)
 
-## [https://urbancode.github.io/velocity-info](https://urbancode.github.io/velocity-info)
 # How to Contribute
 
 - Create an Issue (describe a use case, technique, or problem)
