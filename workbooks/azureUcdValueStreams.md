@@ -3,6 +3,8 @@
 ## Objective
 Create a value stream with Azure and UrbanCode Deploy integrations and exercise it from beginning (a new issue) to end (deployment to Prod).
 
+![](/azure-ucd-overview.png)
+
 ## Workbook Guidelines
 
 **< > Placeholders/Substitution**
@@ -11,9 +13,14 @@ Placeholders should be indicated with angle brackets "<" and ">". For instance, 
 **🔀 Alternative Paths**
 Workbooks should guide users beyond rote exercise towards exploration and discovery. As you go through the workbook, there are certain steps intended to simplify the process; however, some alternative paths will be called out along the way.
 
+---
+
+**Table of contents**
+
 <!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=8 orderedList=false} -->
 
 <!-- code_chunk_output -->
+  - [Objective](#objective)
 - [Creating an Azure and UrbanCode Deploy (UCD) Value Stream](#creating-an-azure-and-urbancode-deploy-ucd-value-stream)
   - [Objective](#objective)
   - [Workbook Guidelines](#workbook-guidelines)
@@ -24,17 +31,17 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
   - [1.4 Create an Azure Access Token](#14-create-an-azure-access-token)
 - [2. Setup UCD](#2-setup-ucd)
   - [2.1 Create Workbook Component](#21-create-workbook-component)
-    - [2.1.1 Configure Component and get Version from Azure](#211-configure-component-and-get-version-from-azure)
+    - [2.1.1 Configure Component to get Version from Azure](#211-configure-component-to-get-version-from-azure)
     - [2.1.2 Create Component Process](#212-create-component-process)
-  - [2.2 Create Workbook Application](#22-create-workbook-application)
-    - [2.2.1 Create Environments](#221-create-environments)
-    - [2.2.2 Create Application Process](#222-create-application-process)
+  - [2.2 Create Workbook Application with Component](#22-create-workbook-application-with-component)
+    - [2.2.1 Create Application Process](#221-create-application-process)
+    - [2.2.2 Create Environments](#222-create-environments)
   - [2.3 Create UCD Access Token](#23-create-ucd-access-token)
 - [3. Setup Velocity](#3-setup-velocity)
   - [3.1 Create a Velocity User Access Key](#31-create-a-velocity-user-access-key)
   - [3.2 Setup UCD within Velocity](#32-setup-ucd-within-velocity)
     - [3.2.1 Create UCD Integration](#321-create-ucd-integration)
-    - [3.2.2 Upgrade UCD Integration](#322-upgrade-ucd-integration)
+    - [3.2.2 Allow Time for UCD to Sync](#322-allow-time-for-ucd-to-sync)
     - [3.2.3 Add user to UCD Team](#323-add-user-to-ucd-team)
   - [3.3 Setup Azure within Velocity](#33-setup-azure-within-velocity)
     - [3.3.1 Create Azure Integration](#331-create-azure-integration)
@@ -56,7 +63,7 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
     - [4.3.4 Create Pull Request](#434-create-pull-request)
     - [4.3.5 Observe Dot](#435-observe-dot)
   - [4.4 Merged](#44-merged)
-- [5. Use the Value Stream for Deployments](#5-use-the-value-stream-for-deployments)
+- [5. Use the Value Stream with Deployments](#5-use-the-value-stream-with-deployments)
   - [5.1 Create a UCD snapshot](#51-create-a-ucd-snapshot)
   - [5.2 Deploy to Dev](#52-deploy-to-dev)
   - [5.3 Deploy to QA](#53-deploy-to-qa)
@@ -64,24 +71,30 @@ Workbooks should guide users beyond rote exercise towards exploration and discov
 
 <!-- /code_chunk_output -->
 
+
 # 1. Setup Azure
 
-Requirements: 
-  1. Azure account with ability to create a new project.
+For this workbook, you will need an Azure project with the following:
+
+- **An Azure project name that must match your UCD application name.**
+- Work items (Agile board with first two columns being "New" and "Active")
+- An Azure repos git repository
+- A build pipeline that creates repository tags whens it runs. 
+- An Azure access token with read access to all of the above (work items, git repo, and builds)
+
+> The rest of section 1 covers the bare minimum setup. If you already have the above setup or feel comfortable setting it up feel free to skip to section 2 and start configuring UCD, but note that the workbook assumes an Azure project name of "AzureWorkbook". If your project name is different, you will need to name your UCD application accordingly.
 
 ## 1.1 Create Workbook Project 
 
 Navigate to `https://dev.azure.com/<your org name>` to create a new project. To learn more about creating Azure projects visit  [https://docs.microsoft.com/en-us/azure/devops/organizations/projects/create-project](https://docs.microsoft.com/en-us/azure/devops/organizations/projects/create-project)
 
 Configure your new project as follows:
-  - *Project Name:* AzureWorkbook
+  - *Project Name:* AzureWorkbook **(must match UCD application name)**
   - *Visibility:* Private
   - *Version Control:* Git
   - *Work item process:* Agile
 
 ![](azure/new-project-2.png)
-
-(🔀 Alternative: See how far you can get with an existing project)
 
 ## 1.2 Initialize Workbook Repository
 
@@ -93,42 +106,45 @@ In your new project, navigate to "Repos" to create a new repository. It can be t
 
 We also want an Azure pipeline in this workbook to represent our build step. We need to set that up with a little secret sauce: we want successful runs to tag our repo. You can learn more about Azure pipelines at [https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline).
 
-1. Navigate to Pipelines and click "Create Pipeline". For the type of repository select "Azure Repos Git" and select the workbook repository we just created "AzureWorkbook".
-![](azure/new-pipeline-2.png)
-![](azure/new-pipeline-3.png)
-
-2. The default "hello world" .yml is good enough for this workbook's pipeline. Click save (avoid running for now).
+1. Create a new pipeline. You can use the "Starter Pipeline" or default "Hello World" .yml for this workbook. Click save (avoid running for now). 
 ![](azure/new-pipeline-4.png)
-
-3. After the pipeline is created we need to setup repository tagging. Click "edit" from the pipeline view.
+3. After the pipeline is created we need to setup repository tagging. Click "edit" from the pipeline view. 
 ![](azure/new-pipeline-5.png)
-
-4. After clicking edit you should see the yml. Click on the vertical ellipsis in the upper right beside "Run" and click "Triggers" from the dropdown.
+4. After clicking edit you should see the yml. Click on the vertical ellipsis in the upper right beside "Run" and click "Triggers" from the dropdown. 
 ![](azure/new-pipeline-6.png)
-
-5. There's a lot to unpack under "Triggers", but we're going to be laser focussed on one thing right now. Click "YAML" on the left of the upper horizontal tabs. Click "Get Sources" under YAML. Scroll down in the menu that shows on the right. Under "Tag sources" click "On Success". Go ahead and click "Save & queue". Our pipeline should now create repository tags for successful builds, and since we queued it, we should have a build pending.
+5. There's a lot to unpack here, but we're going to be laser focussed on one thing right now. Click **"YAML"** on the left of the upper horizontal tabs. Click **"Get Sources"** under YAML. Scroll down in the menu that shows to the right. Under **"Tag sources"** click **"On Success"**. Go ahead and click **"Save & queue"**. Our pipeline should now create repository tags for successful builds, and since we queued it, we should have a build pending. 
 ![](azure/new-pipeline-7.png)
-
-6. Confirm that the pipeline ran successfully and created a tag for the repository.
+6. Confirm that the pipeline successfully ran and created a tag for the repository. 
 ![](azure/repo-tags-1.png)
 
 ## 1.4 Create an Azure Access Token
 
-Navigate to `https://dev.azure.com/<your org name>/_usersSettings/tokens`.
+Navigate to `https://dev.azure.com/<your org name>/_usersSettings/tokens`. Learn more about Azure Access tokens at [https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
 
-Create a new token. Give it a reasonable name an expiration date for your usage. The easiest option is to select "Full Access". Make sure to copy and save your key (you'll need it later in Velocity).
+Create a new token. Give it a reasonable name and expiration date. The minimal scope is read access to "Work Items", "Code", and "Build". Make sure to copy and save your key (you'll need it later in Velocity).
 
 ![](azure/access-token-2.png)
 
 # 2. Setup UCD
 
-UCD should already be setup with an available agent. We will setup a component and application for this workbook.
+UCD requirements are as follows:
+
+  - At least one agent
+  - At least one component with the following:
+    - Component configured to get versions from the Azure repository (git source, watch for tags, import versions automatically)
+    - Component must have a deploy process
+  - An application with the following:
+    - Named the same as the Azure project (this workbook uses the name "AzureWorkbook")
+    - Application must have an install process for component above
+    - The application should have three environments that we can deploy to. These will map to DEV, QA, and PROD.
+  - A UCD user access token
+
+
+> If you already have the above setup or feel comfortable setting it up on your own please feel free to skip to section 3 to start setting up Velocity. The rest of section 2 presents the bare minimum setup in UCD assuming we already have an agent.
 
 ## 2.1 Create Workbook Component
 
-Create a component for this workbook.
-
-### 2.1.1 Configure Component and get Version from Azure
+### 2.1.1 Configure Component to get Version from Azure
 First obtain the repository URL and generated credentials for this workbook's Azure git repo.
 
 ![](azure/repository-url-1.png)
@@ -140,49 +156,61 @@ Create an AzureWorkbook component within UCD. It is important that this componen
 
   - **Name:** something like AzureWorkbookComponent
   - **Source Configuration Type:** Git
-  - **Repository URL:** `https://dev.azure.com/<org name>/AzureWorkbook/_git/AzureWorkbook` (note: if copied from Azure you will probably need to remove a user name portion "\<user name\>@")
+  - **Repository URL:** `https://dev.azure.com/<org name>/AzureWorkbook/_git/AzureWorkbook` (note: **If you copied this URL from Azure make sure to remove any user name portion "\<user name\>@"**)
   - **User name:** Copied from Azure git repo's generated credentials
   - **Password:** Copied from Azure git repo's generated credentials
   - Check **"Watch for Tags"**
   - Check **"Import Versions Automatically"**
 
 ![](ucd/azureWorkbook/component-config-1.png)
+
 ![](ucd/azureWorkbook/component-config-2.png)
+
 ![](ucd/azureWorkbook/component-config-3.png)
+
+> Note: The default tag import option is "Use the system's default version import agent/tag".
+![](ucd/import-default-agent.png)
+> This option requires UCD Component settings to have "Agent for Version Import" configured (Settings --> System Settings --> Component Settings --> Agent for Version Imports). ![](ucd/component-settings.png)
 
 Confirm that the component version was imported from the Azure tag we created when we ran the Azure pipeline earlier.
 
 ![](ucd/azureWorkbook/component-versions.png)
 
-## 2.1.2 Create Component Process
+> If your import hangs without an error, confirm that your "External Agent URL" is accessible to the default import agent (Settings --> System Settings --> General Settings --> External Agent URL). See here for more details: https://github.com/UrbanCode/velocity-info/issues/17
+### 2.1.2 Create Component Process
 
 We just need a bare minimum deploy process for this workbook. Make sure it is "Process Type" Deployment. The process itself will just be a one second wait (The wait step is available under utilities).
 
 ![](ucd/azureWorkbook/component-process-1.png)
+
 ![](ucd/azureWorkbook/component-process-2.png)
 
 
-## 2.2 Create Workbook Application
+## 2.2 Create Workbook Application with Component
 
-Create an application and name it "AzureWorkbook".
+Create an application and name it "AzureWorkbook". **It is important that the UCD application name matches the Azure project name.** Make sure to add the workbook component to the application.
 
-## 2.2.1 Create Environments
+![](ucd/azureWorkbook/app-add-component.png)
 
-Create three environments. You can use the same base resource for each environment. It should contain an agent with the workbook component we just created.
-
-![](ucd/azureWorkbook/application-env-1.png)
-
-## 2.2.2 Create Application Process
+### 2.2.1 Create Application Process
 
 Create a bare minimum install process for the application to install our component.
 
 ![](ucd/azureWorkbook/application-process-1.png)
+
 ![](ucd/azureWorkbook/application-process-2.png)
 
+### 2.2.2 Create Environments
+
+Create three environments named **"DEV", "QA", and "PROD"**. You can use the same base resource for each environment. Each should contain an agent with the workbook component we just created.
+
+![](ucd/azureWorkbook/create-env.png)
+
+![](ucd/azureWorkbook/application-env-1.png)
 
 ## 2.3 Create UCD Access Token
 
-Navigate to `<UCD URL>/#security/tokens` ("Settings" --> "Tokens") and click "Create Token". Make sure to copy and save token to use later.
+Navigate to `<UCD URL>/#security/tokens` ("Settings" --> "Tokens") and click **"Create Token"**. Make sure to copy and save token to use later.
 
 ![](ucd/azureWorkbook/create-token.png)
 
@@ -196,7 +224,7 @@ Requirements:
 
 ## 3.1 Create a Velocity User Access Key
 
-Navigate to `<Velocity URL>/settings/myprofile` to create a user access key. Name the key so you can identify and delete it later if needed. Make sure to copy the access key for future use.
+Navigate to `<Velocity URL>/settings/myprofile` to create a user access key. Name the key so you can identify and delete it later if needed. **Make sure to copy the access key for future use.**
 
 ![](velocity/access-key-1.png)
 
@@ -204,19 +232,20 @@ Navigate to `<Velocity URL>/settings/myprofile` to create a user access key. Nam
 
 ### 3.2.1 Create UCD Integration
 
-Navigate to `<Velocity URL>/settings/integrations`. Click "Plugins" and click "Add Integration" for the "UrbanCode Deploy" plugin. Fill out the fields as shown below:
+Navigate to `<Velocity URL>/settings/integrations`. Click **"Plugins"** and click **"Add Integration"** for the **"UrbanCode Deploy"** plugin. Fill out the fields as shown below:
 
-  - **Name:** something like UcdWorkbook
-  - **UrbanCode Deploy Server URL:** Your UCD server URL. Note that if Velocity is running from a Docker-Compose instance replace "localhost" and/or 127.0.0.1 with "host.docker.internal".
-  - **UrbanCode Deploy Access Token:** The UCD access token we previously created.]
+  - **Name:** something like "UcdWorkbook"
+  - **UrbanCode Deploy Server URL:** Your UCD server URL
+  > Note: Consider containerized networking. For instance, if Velocity is running from a Docker-Compose container and UCD is running at "localhost" then use "host.docker.internal" in place of "localhost".
+  - **UrbanCode Deploy Access Token:** The UCD access token we previously created.
 
 ![](velocity/add-integration-ucd.png)
 
-### 3.2.2 Upgrade UCD Integration
+### 3.2.2 Allow Time for UCD to Sync
 
-After creating the integration, click on the vertical ellipses on the right of the integration's row and click "upgrade" if available.
+Before proceeding, it is important to **allow time for the UCD integration to sync**.
 
-![](velocity/integration-vertical-ellipses.png)
+![](velocity/integration-ucd-sync.png)
 
 ### 3.2.3 Add user to UCD Team
 
@@ -232,25 +261,25 @@ Navigate to `<Velocity URL>/settings/integrations`. Click "Plugins" and click "A
 
 ![](velocity/add-integration-azure.png)
 
-  - *Integration Name:* Use "AzureWorkbook" for this workbook.
-  - *Loggin level:* "INFO"
-  - *UrbanCode Velocity User Access Key:* Use the velocity user access key that was just created in section 2.1 above.
+  - **Integration Name:** Use "AzureWorkbook" to match the vsm.json file that we'll use later.
+  - **Loggin level:** "INFO"
+  - **UrbanCode Velocity User Access Key:** Use the velocity user access key that we just created.
 
 ![](velocity/add-integration-azure-form-1.png)
 
-  - *URL:* This example uses https://dev.azure.com
-  - *Username:* What you use to login to Azure. Usually an email address.
+  - **URL:** The Azure URL: https://dev.azure.com
+  - **Username:** What you use to login to Azure. Usually an email address.
 
 ![](velocity/add-integration-azure-form-2.png)
 
-  - *Password:* leave blank (using access token instead)
-  - *Access Token:* Paste the Azure access token we created earlier.
+  - **Password:** leave blank (using access token instead)
+  - **Access Token:** Paste the Azure access token we created earlier.
 
 ![](velocity/add-integration-azure-form-3.png)
 
-  - *Organization:* You Azure organization name. Can be obtained and confirmed with your Azure home URL: `https://dev.azure.com/<your org name>`.
-  - *Project:* Your Azure project name. Use "AzureWorkbook" for the workbook. This can be derived and confirmed against the project URL: `https://dev.azure.com/<your org name>/<project name>`
-  - *Repositories:* You Azure repository (repo) name. Use "AzureWorkbook" for the workbook. This can be derived and confirmed against the repo URL: `https://dev.azure.com/<your org name>/_git/<repo name>`
+  - **Organization:** You Azure organization name. Can be obtained and confirmed with your Azure home URL: `https://dev.azure.com/<your org name>`.
+  - **Project:** Your Azure project name. Use "AzureWorkbook" for the workbook. This can be derived and confirmed against the project URL: `https://dev.azure.com/<your org name>/<project name>`
+  - **Repositories:** You Azure repository (repo) name. Use "AzureWorkbook" for the workbook. This can be derived and confirmed against the repo URL: `https://dev.azure.com/<your org name>/_git/<repo name>`
 
 ![](velocity/add-integration-azure-form-4.png)
 
@@ -260,27 +289,36 @@ Depending on your version of Velocity you might see an extra field for "Logger L
 
 ### 3.3.2 Upgrade Azure Integration
 
-After creating the integration, click on the vertical ellipses on the right of the integration's row and click "upgrade" if available.
+**It is important to use the latest version of the Azure plugin for this workbook.** After creating the integration, click on the vertical ellipses on the right of the integration's row and click "upgrade" (if "upgrade" is not shown in the dropdown then the plugin is already updated to latest).
+
+> A blue dot appears to the left of integrations whenever an upgrade is available.
 
 ![](velocity/integration-vertical-ellipses.png)
 
 ## 3.4 Create a Dummy Integration
 
-Because of the way we are going to configure our value stream, this workbook requires a dummy integration. Add another integration from the integrations page by Clicking on "Plugins" and "Add Integration" for GitHub for instance. Name the integration dummyIntegration. The rest of the configuration can be anything so long as it gets created. We should now have two integrations: "AzureWorkbook" and "dummyIntegration".
+Because of the way we are going to configure our value stream, this workbook requires a dummy integration. Add another integration from the integrations page by Clicking on "Plugins" and "Add Integration" for any plugin. Name the integration "dummyIntegration" (must match vsm.json configuration used later). The rest of the dummyIntegration's configuration does not matter so long as it gets created.
+
+Go ahead and disable the dummyIntegration after creating it. Its status does not matter. **We should now have three integrations: "AzureWorkbook", "dummyIntegration", and our UCD integration.**
+
+![](AzureValueStream/integration-summary.png)
+
+
 
 ## 3.5 Create a New Value Stream
 
   1. Navigate to the *Value Streams* page and click "Create"   
 ![Jenkins Global Config Page](valueStream/newValueStream/1.png)
-  2. Name your value stream and select a team for it. The workbook uses the name **"Azure Workbook"** and **"Default Team"**. A value stream description is optional.   
-![Jenkins Global Config Page](valueStream/newValueStream/form-Azure.png)
 
+  2. Name your value stream and select a team for it. The workbook uses the name **"Azure Workbook"** and **"Default Team"**. A value stream description is optional.
 
 | Field | Description | Required | 
 |-------|-------------|----------|
 | Name | value stream name. | yes |
 | Description | value stream description | no | 
 | Team | Team of users who can access this value stream. | yes | 
+
+![Jenkins Global Config Page](valueStream/newValueStream/form-Azure.png)
 
 ### 3.5.1 Create a vsm.json file
 
@@ -469,7 +507,7 @@ After uploading the vsm.json file you should see the appropriate phases and stag
 
 ### 3.6.1 Add UCD to the Pipeline
 
-On the Value Stream page, click "Pipeline" and click "Add App", then  choose "UrbanCode Deploy" from the dropdown. You will also need to select the application and process for this workbook.
+On the Value Stream page, click **"Pipeline"** and click **"Add App"**, then  choose **"UrbanCode Deploy"** from the dropdown. You will also need to select the application and process for this workbook.
 
 ![](velocity/pipeline-add-ucd.png)
 
@@ -485,9 +523,17 @@ Click on the "+" icon under each environment to map a UCD environment to the Vel
 
 Shew, that was a lot of setup. Now let's get that dot moving!
 
-> **Pro Tip**: We're about to do a lot of external activity to Velocity. To speed things up, you can force Velocity's Azure integration to sync by clicking disable/enable every time we change an external state (like create a work item or merge a PR)
+> **Explore**: Each step shows a value stream screenshot of the dot in a stage, but don't let your exploration stop there! As you go through this workbook take a look around. The "Swim Lanes" view is automatically configured as part of the value stream. It provides an assigned user view all the way from backlog to PROD. Poke around more and you'll find that Insights is already at work gathering data like build and deployment counts as we proceed.
+> ![](AzureValueStream/swimlanes-prod.png)
+> ![](AzureValueStream/insights.png)
+
+
+---
+
+> **Pro Tip**: We're about to do a lot of external activity to Velocity. To speed things up, you can force Velocity integrations to sync by clicking disable/enable every time we change an external state (like create a work item or merge a PR)
 >
 > ![](AzureValueStream/integration-sync.png)
+
 
 
 ## 4.1 Backlog
@@ -496,7 +542,7 @@ As observed above, our value stream has a bunch of stages but no dots, that's pe
 
 ![](AzureValueStream/2-new-work-item-1.png)
 
-You can title this work item anything you like, the example below names it "do the workbook" and assigns it a work item ID of "5". **Take note of this work item ID (5 is shown here but for a first time workbook it's probably 1), we'll need it later.**
+You can title this work item anything you like, the example below names it "do the workbook" and assigns it a work item ID of "5". **Take note of this work item ID. It will probably be a different number for you and you will need it later.**
 
 ![](AzureValueStream/2-new-work-item-2.png)
 
@@ -532,11 +578,11 @@ Now that the card is active, we have to do some actual work to move the dot to r
 
 ### 4.3.1 Create a new Branch
 
-Navigate to branches in Azure and click "New branch".
+Navigate to branches in Azure and click "New branch". 
+The branch name does not matter; you can just name it "workbook" and Click create.
 
 ![](AzureValueStream/4-new-branch-1.png)
 
-The branch name doesn't really matter; you can just name it "workbook". Click create.
 
 ### 4.3.2 Make Changes to the Branch
 
@@ -546,7 +592,7 @@ Once the branch is created we can directly edit the `README.md` file from Azure.
 
 ![](AzureValueStream/4-edit-branch.png)
 
-## 4.3.3 Commit Changes
+### 4.3.3 Commit Changes
 
 Once you've made changes click "Commit".
 
@@ -558,7 +604,7 @@ After committing changes our branch is now different than master. That's great, 
 
 ![](AzureValueStream/4-create-pr-1.png)
 
-For the most part, the default values are fine for the Pull Request (PR), except one critical piece: **we need the work item ID to be in the PR title**. This is because we configured our value stream back in Velocity to link work items to PRs based on the work item ID in the PR title. The example here shows "5" but the ID for a new Azure project will be "1". Once correctly titled, click "Create" to create the PR.
+For the most part, the default values are fine for the Pull Request (PR), except one critical piece: **we need the work item ID to be in the PR title**. This is because we configured our value stream back in Velocity to link work items to PRs based on the work item ID in the PR title. The example here shows "5" but your ID is probably different. Once correctly titled, click "Create" to create the PR.
 
 ![](AzureValueStream/4-create-pr-2.png)
 
@@ -598,22 +644,28 @@ We should be fine with choosing "Latest Available" for our version. This should 
 
 ![](ucd/env-request-process-version.png)
 
-The process should run and deploy the component. Click the camera icon for DEV to take a snapshot of the deployment.
+The process should run and deploy the component. Click the camera icon for DEV to take a snapshot of the deployment. **Name the snapshot the same as the version.**
 
-![](ucd/env-snapshot-circle.png)
+![](ucd/azureWorkbook/dev-deployed-version.png)
 
 ## 5.2 Deploy to Dev
 
-From UCD, click the play icon again except this time let's use our snapshot for the deployment.
+From UCD, click the play icon again except this time let's use our snapshot for the deployment. Then go back to Velocity and give it time to sync. The dot will move to the deployment stage for DEV.
 
 ![](ucd/env-request-process-circle.png)
 
-Go back to Velocity and give it time to sync. The dot will move to the deployment stage for DEV.
+![](AzureValueStream/dot-dev.png)
 
 ## 5.3 Deploy to QA
 
 From Velocity, go to our pipeline. Click the play icon for QA. Give it time to run and sync, then navigate back to the value stream and observe the dot in QA.
 
+![](AzureValueStream/deploy-qa.png)
+
+![](AzureValueStream/dot-qa.png)
+
 ## 5.4 Deploy to Prod
 
-Finally, use the Velocity pipeline to deploy to PROD. Observe the dot move to PROD. We have completed the value stream at this point from planning to production.
+Finally, you can choose either between UCD or the Velocity pipeline to deploy the snapshot to PROD. Wait for Velocity to sync and the dot will move to PROD. We have completed the value stream at this point from planning to production. 👏
+
+![](AzureValueStream/dot-prod.png)
