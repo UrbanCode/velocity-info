@@ -2,6 +2,16 @@
 
 A common realm for practical usage of UrbanCode Velocity.
 
+# Product Documentation
+
+*This content is supplemental. Please also refer to version specific product documentation.*
+
+#### [>> HCL Documentation](https://urbancode.hcldoc.com/)
+#### [>> IBM Documentation](https://www.ibm.com/support/knowledgecenter/SSCKX6)
+#### Also checkout the Velocity Website! :) [http://www.urbancode.com/](http://www.urbancode.com/)
+
+![Documentation can be accessed in the upper right of Velocity](workbooks/general/docs.png)
+
 ## [https://urbancode.github.io/velocity-info](https://urbancode.github.io/velocity-info)
 # How to Contribute
 
@@ -11,14 +21,3 @@ A common realm for practical usage of UrbanCode Velocity.
 - Propose changes with a PR (direct addition or modification of content pending review)
 ![](workbooks/general/contribute_pr_1.png)
 ![](workbooks/general/contribute_pr_2.png)
-
-# Product Documentation
-
-*This content is supplemental. Please also refer to version specific product documentation.*
-
-#### [>> HCL Documentation](https://urbancode.hcldoc.com/)
-#### [>> IBM Documentation](https://www.ibm.com/support/knowledgecenter/SSCKX6)
-
-![Documentation can be accessed in the upper right of Velocity](workbooks/general/docs.png)
-
-#### Also checkout the Velocity Website! :) [http://www.urbancode.com/](http://www.urbancode.com/)
