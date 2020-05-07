@@ -3,6 +3,7 @@
 A common realm for practical usage of UrbanCode Velocity.
 
 ## [https://urbancode.github.io/velocity-info](https://urbancode.github.io/velocity-info)
+
 # How to Contribute
 
 - Create an Issue (describe a use case, technique, or problem)
@@ -18,7 +19,6 @@ A common realm for practical usage of UrbanCode Velocity.
 
 #### [>> HCL Documentation](https://urbancode.hcldoc.com/)
 #### [>> IBM Documentation](https://www.ibm.com/support/knowledgecenter/SSCKX6)
+#### Also checkout the Velocity Website! :) [http://www.urbancode.com/](http://www.urbancode.com/)
 
 ![Documentation can be accessed in the upper right of Velocity](workbooks/general/docs.png)
-
-#### Also checkout the Velocity Website! :) [http://www.urbancode.com/](http://www.urbancode.com/)
