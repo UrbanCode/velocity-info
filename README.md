@@ -13,6 +13,11 @@ A common realm for practical usage of UrbanCode Velocity.
 ![](workbooks/general/contribute_pr_1.png)
 ![](workbooks/general/contribute_pr_2.png)
 
+# Need Help with Markdown?? This repo uses GitHub MarkDown. Learn more about it Here!
+
+https://guides.github.com/features/mastering-markdown/
+
+
 # Product Documentation
 
 *This content is supplemental. Please also refer to version specific product documentation.*
