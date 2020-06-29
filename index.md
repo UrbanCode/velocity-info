@@ -8,14 +8,16 @@ NOTE: This content is geared towards community engagement. Please refer to versi
 
 ---
 
-# Workbooks
+# Tutorials and Workbooks
 
 ### 1. [Building a Value Stream with Jira, GitHub, and Jenkins](workbooks/introductionToValueStreams.md) 
 ![](workbooks/valueStream/valueStreamOverview.png)
 ### 2. [Building a Value Stream with Azure and UCD](workbooks/azureUcdValueStreams.md) 
 ![](workbooks/azure-ucd-overview.png)
+### 3. [Plugin SDK Hello World](plugin-sdk/helloWorld.md)
+![](plugin-sdk/screenshots/view-logs.png)
 
-# General Content
+# Guides
 - ### [API Usage](apiDocs/release-events-api_API_docs.md)
 - ### [How to Migrate Docker-Compose to Kubernetes](docker-compose_to_kubernetes.md)
 ---
