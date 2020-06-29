@@ -26,7 +26,7 @@ NOTE: This content is geared towards community engagement. Please refer to versi
 
 Your contributions are welcome and appreciated! 🙂
 
-**Create an Issue**   
+**Create an Issue**
 The easiest way to contribute is by asking and/or answering a velocity-info issue (5 points and a gold star ⭐ if you ask and answer your own question).
 
 These are not product issues, but a way to contribute to user content, so topics are very open. For instance, you might request new content like a workbook, suggest supplementary info, or describe a hurdle and/or solution.
