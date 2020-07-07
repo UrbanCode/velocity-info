@@ -609,6 +609,8 @@ At this point, back in our value stream, there should still be a dot in the "Mer
 >  }
 >  ```
 
+> **StartTime and endTime**: The example here does not pass startTime or endTime to either build or deployment uploads. If the startTime and endTime are not provided, then the Jenkins plugin defaults to the current time for both. For long running builds and deployments, a script can upload startTime and endTime values as needed.
+
 ### 4.5.2 Deploying to Prod
 
 

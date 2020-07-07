@@ -1,5 +1,7 @@
 # Docker Compose to Kubernetes Migration
 
+<mark>Requires Velocity 1.5.2 or later.</mark>
+
 ## Dump Current Database from Existing Installation
 
   1. Open a shell inside the database container

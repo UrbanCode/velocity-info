@@ -1,19 +1,20 @@
 NOTE: This content is geared towards community engagement. Please refer to version specific product documentation for details.
 
-#### [>> Plugin Documentation](https://www.urbancode.com/plugins/?search=&product_filter%5B%5D=811)
-#### \>> Also, look for the help icon in the upper right of Velocity's header to find links to Documentation, Getting started, and About information.
+#### \>> Look for the help icon in the upper right of Velocity's header to find links to [Documentation](https://www.ibm.com/support/knowledgecenter/SSCKX6), Getting started, and About information.
 ![Documentation can be accessed in the upper right of Velocity](workbooks/general/docs.png)
 
 ---
 
-# Workbooks
+# Tutorials and Workbooks
 
 ### 1. [Building a Value Stream with Jira, GitHub, and Jenkins](workbooks/introductionToValueStreams.md) 
 ![](workbooks/valueStream/valueStreamOverview.png)
 ### 2. [Building a Value Stream with Azure and UCD](workbooks/azureUcdValueStreams.md) 
 ![](workbooks/azure-ucd-overview.png)
+### 3. [Plugin SDK Hello World](plugin-sdk/helloWorld.md)
+![](plugin-sdk/screenshots/view-logs.png)
 
-# General Content
+# Guides
 - ### [API Usage](apiDocs/release-events-api_API_docs.md)
 - ### [How to Migrate Docker-Compose to Kubernetes](docker-compose_to_kubernetes.md)
 ---
@@ -22,7 +23,7 @@ NOTE: This content is geared towards community engagement. Please refer to versi
 
 Your contributions are welcome and appreciated! 🙂
 
-**Create an Issue**   
+**Create an Issue**
 The easiest way to contribute is by asking and/or answering a velocity-info issue (5 points and a gold star ⭐ if you ask and answer your own question).
 
 These are not product issues, but a way to contribute to user content, so topics are very open. For instance, you might request new content like a workbook, suggest supplementary info, or describe a hurdle and/or solution.
