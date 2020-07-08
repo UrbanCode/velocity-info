@@ -1,4 +1,4 @@
-#### This page is a simple way to share working knowledge. Refer to the [Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSCKX6) for official documentation. You can also look under the help icon in the upper right of Velocity's header for a documentation link.
+#### This page is a simple way to share working knowledge of IBM UrbanCode Velocity. Refer to the [Knowledge Center](https://www.ibm.com/support/knowledgecenter/SSCKX6) for official documentation. You can also look under the help icon in the upper right of Velocity's header for a documentation link.
 
 ![Documentation can be accessed in the upper right of Velocity](workbooks/general/docs.png)
 
@@ -12,8 +12,8 @@ Login with your IBM ID to vote for product features, or share a new idea with th
 - [Blogs and Videos](https://www.urbancode.com/resources/?search=&product_filter%5B%5D=811)
 
 ### Other Helpful Links
-- Getting Started (Free Trial): [https://www.urbancode.com/getstarted/](https://www.urbancode.com/getstarted/)
-- Passport Advantage (Product Licensing): [https://www.ibm.com/software/passportadvantage/](https://www.ibm.com/software/passportadvantage/)
+- Getting Started: You can get the **Community Edition** and/or **Free Trial** at [https://www.urbancode.com/getstarted/](https://www.urbancode.com/getstarted/)
+- Passport Advantage: For product licensing see [https://www.ibm.com/software/passportadvantage/](https://www.ibm.com/software/passportadvantage/)
 - Velocity Installer Download:
   - [Linux](https://www.urbancode.com/uc-downloads/Velocity/latest/velocity-ibm-install-latest-linux)
   - [Mac](https://www.urbancode.com/uc-downloads/Velocity/latest/velocity-ibm-install-latest-macos)
