@@ -125,7 +125,7 @@ See also [Jira plugin Documentation](https://www.urbancode.com/plugindoc/jira-4/
 ![](/jira/addIntegration/7.PNG)
 ![](/jira/addIntegration/7a.png)
 
-8. After clicking on "Save" the integration should be created and visible on the integrations page.  
+8. After clicking on "Add" the integration should be created and visible on the integrations page.  
 ![](/jira/addIntegration/9.png)
 
 ## 2.3 Adding a Jira Integration to a Value Stream
