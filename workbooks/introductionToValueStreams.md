@@ -87,7 +87,7 @@ Our first order of business is to create the value stream. All we want to do is 
 
 - **Jira Board**
 
-  The Jira board should have the five columns and status names listed below:
+  For this workbook, your Jira board should have the five columns and status names listed below. The default Kanban board is a good place to start. You do not have to use Kanban though.
 
   1. Backlog
   2. Selected for Development
@@ -98,7 +98,7 @@ Our first order of business is to create the value stream. All we want to do is 
   ![](jira/workflow.png)
 
 - **Jira Issue**
-  The workbook begins with a single issue in the "backlog" column.
+  This workbook begins with a single issue in the "backlog" column.
 
   ![](jira/jiraBoard.png)
 
