@@ -2,9 +2,9 @@
 
 ![Documentation can be accessed in the upper right of Velocity](workbooks/general/docs.png)
 
-### Suggest & vote for product features - [Join the RFE community](https://www.ibm.com/developerworks/rfe/execute?use_case=searchRFEs&SELECTED_SEARCH_TAB=TAB1&SPECIFY_PRODUCT_TYPE=SPECIFY_PRODUCT_ONLY&BRAND_ID=90&PROD_FAM_ID=675&BRAND_ID_SEARCH=90&PROD_FAM_ID_SEARCH=675&PROD_ID_SEARCH=20136&COMP_ID=416&CREATED_BY=&KEYWORDS=&KW_TYPE=1&START_DATE=&STOP_DATE=&CR_ID=&COMPANY=&GROUP_ID=&rfenumber=id&PAGE=1&ITEMS_PER_PAGE=20&SORT_BY=RESP_ID&SORT_ORDER=ASC&HIDE_DESCRIPTIONS=true&is_javascript_enabled=false)
+### Suggest & vote for product features
 
-Login with your IBM ID to vote for product features, or share a new idea with the community. If you do not have an IBM ID, simply create one.
+- [Join the RFE community](https://www.ibm.com/developerworks/rfe/execute?use_case=searchRFEs&SELECTED_SEARCH_TAB=TAB1&SPECIFY_PRODUCT_TYPE=SPECIFY_PRODUCT_ONLY&BRAND_ID=90&PROD_FAM_ID=675&BRAND_ID_SEARCH=90&PROD_FAM_ID_SEARCH=675&PROD_ID_SEARCH=20136&COMP_ID=416&CREATED_BY=&KEYWORDS=&KW_TYPE=1&START_DATE=&STOP_DATE=&CR_ID=&COMPANY=&GROUP_ID=&rfenumber=id&PAGE=1&ITEMS_PER_PAGE=20&SORT_BY=RESP_ID&SORT_ORDER=ASC&HIDE_DESCRIPTIONS=true&is_javascript_enabled=false) Login with your IBM ID to vote for product features, or share a new idea with the community. If you do not have an IBM ID, simply create one.
 
 ### Learn more about UrbanCode Velocity, DevOps, and Value Streams at urbancode.com
 - [Velocity plugins](https://www.urbancode.com/plugins/?search=&product_filter%5B%5D=811)
