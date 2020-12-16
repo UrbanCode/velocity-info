@@ -23,8 +23,7 @@ https://guides.github.com/features/mastering-markdown/
 
 *This content is supplemental. Please also refer to version specific product documentation.*
 
-#### [>> HCL Documentation](https://urbancode.hcldoc.com/)
-#### [>> IBM Documentation](https://www.ibm.com/support/knowledgecenter/SSCKX6)
+#### [Documentation](https://www.ibm.com/support/knowledgecenter/SSCKX6)
 #### Also checkout the Velocity Website! :) [http://www.urbancode.com/](http://www.urbancode.com/)
 
 ![Documentation can be accessed in the upper right of Velocity](workbooks/general/docs.png)
