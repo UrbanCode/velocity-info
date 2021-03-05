@@ -468,21 +468,25 @@ Jenkins publishes data to Velocity using API attributes to identify constructs s
     ![](jenkins/newItem.PNG)  
     ![](jenkins/newPipeline.PNG)
 
-2. Copy and paste the script below as a pipeline script. You will need to provide four variables to the script, which are summarized in the table below.
+2. Copy and paste the script below as a pipeline script. You will need to provide the variables summarized in the table below.
 
 **Variable Name**|**Description**|**Example**
 -----|-----|-----
 GITHUB\_REPO\_URL|The URL to your GitHub repository that you are using for this workbook.|https://github.com/UrbanCodeVelocity/JKE-App-1
+GITHUB\_BRANCH|The GitHub branch name used for the build. Usually "main" or "master"|main
 VELOCITY\_ENV\_ID\_DEV|An ID that uniquely identifies your value stream's DEV environment|cb348f56-29f3-4ade-9c9f-38daedf3b663
 VELOCITY\_ENV\_ID\_QA|An ID that uniquely identifies your value stream's QA environment|7a115f90-f4e5-4181-9920-78b216bb4afc
 VELOCITY\_APP\_NAME|The Velocity pipeline application name (use "JKE App1" for the workbook, we will create this pipeline application later)|JKE App1
+
+
 
 ```groovy
 node {
 
     //URL to Github repository https://github.com/<owner>/<repo>
     def GITHUB_REPO_URL="https://github.com/<OWNER>/<REPO NAME>"
-
+    def GITHUB_BRANCH="main"
+    
     //Retrieve ENV ID values for DEV and QA from "Download attributes from API" json file
     def VELOCITY_ENV_ID_DEV="<DEV ENVIRONMENT ID>"
     def VELOCITY_ENV_ID_QA="<QA ENVIRONMENT ID>"
@@ -496,7 +500,7 @@ node {
     stage ('cloning the repository'){
       currentBuild.displayName = "2.1.1.${BUILD_NUMBER}"
       majorVersion="${BUILD_NUMBER}"
-      def scm = git branch: 'master', url: "${GITHUB_REPO_URL}"
+      def scm = git branch: "${GITHUB_BRANCH}", url: "${GITHUB_REPO_URL}"
       GIT_COMMIT = sh(returnStdout: true, script: "git rev-parse HEAD").trim()
       echo "GIT_COMMIT=${GIT_COMMIT}"
     }
